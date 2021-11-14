@@ -1,46 +1,31 @@
 ﻿#include <iostream>
-#include <vector>
-#include <string>
-#include <stdio.h>
-#include <stdlib.h>
-
-#include <cgicc/CgiDefs.h>
-#include <cgicc/Cgicc.h>
-#include <cgicc/HTTPHTMLHeader.h>
-#include <cgicc/HTMLClasses.h>
-
 using namespace std;
-using namespace cgicc;
 
-int main ()
-{
-   Cgicc cgi;
-   const_cookie_iterator cci;
+int main() {
+    int i=5,j=6;
+    int &r=i;
+    void *pi,*pj;
+    int* addr;
+    int dis;
 
-   cout << "Content-type:text/html\r\n\r\n";
-   cout << "<html>\n";
-   cout << "<head>\n";
-   cout << "<title>CGI 中的 Cookies</title>\n";
-   cout << "</head>\n";
-   cout << "<body>\n";
-   cout << "<table border = \"0\" cellspacing = \"2\">";
+    pi=&i;    //取整型变量i的地址
+    pj=&j;    //取整型变量j的地址
+    dis=(int)pj-(int)pi;//计算连续两个整型变量的内存地址之间距离
+    addr=(int*)((int)pj+dis);//计算引用变量r在内存中的地址
 
-   // 获取环境变量
-   const CgiEnvironment& env = cgi.getEnvironment();
+    cout<<"&i:"<<pi<<endl;
+    cout<<"&j:"<<pj<<endl;
+    cout<<"&pi:"<<&pi<<endl;
+    cout<<"&pj:"<<&pj<<endl;
+    cout<<"&addr:"<<&addr<<endl;
+    cout<<"&dis:"<<&dis<<endl;
+    cout<<"distance:"<<dis<<endl;
 
-   for( cci = env.getCookieList().begin();
-        cci != env.getCookieList().end();
-        ++cci )
-   {
-      cout << "<tr><td>" << cci->getName() << "</td><td>";
-      cout << cci->getValue();
-      cout << "</td></tr>\n";
-   }
-   cout << "</table><\n";
+    (*addr)=(int)&j;    //将j的地址赋给引用r（此处把r看作指针）
 
-   cout << "<br/>\n";
-   cout << "</body>\n";
-   cout << "</html>\n";
-
-   return 0;
+    cout<<"addr:"<<addr<<endl;
+    r=100;
+    cout<<i<<" "<<j<<endl;
+    return 0;
 }
+

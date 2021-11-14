@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1202</width>
-    <height>753</height>
+    <width>971</width>
+    <height>645</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,41 +15,15 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="2" column="2">
-     <widget class="QPushButton" name="charDemo">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>chart_demo</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="2">
-     <widget class="QPushButton" name="tcpDemo">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>tcp_demo</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <spacer name="horizontalSpacer">
+    <item row="0" column="1">
+     <spacer name="verticalSpacer">
       <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+       <enum>Qt::Vertical</enum>
       </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>40</width>
-        <height>20</height>
+        <width>20</width>
+        <height>40</height>
        </size>
       </property>
      </spacer>
@@ -67,16 +41,16 @@
       </property>
      </spacer>
     </item>
-    <item row="3" column="1">
-     <widget class="QPushButton" name="rs232Demo">
+    <item row="1" column="1">
+     <widget class="QPushButton" name="sysManage">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
+        <horstretch>1</horstretch>
+        <verstretch>1</verstretch>
        </sizepolicy>
       </property>
       <property name="text">
-       <string>RS232_demo</string>
+       <string>系统管理</string>
       </property>
      </widget>
     </item>
@@ -84,7 +58,7 @@
      <widget class="QPushButton" name="dataAnalyze">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
+        <horstretch>1</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
@@ -93,7 +67,26 @@
       </property>
      </widget>
     </item>
-    <item row="4" column="1">
+    <item row="2" column="2">
+     <widget class="QPushButton" name="charDemo">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>250</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>chart_demo</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
      <spacer name="verticalSpacer_2">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -106,29 +99,29 @@
       </property>
      </spacer>
     </item>
-    <item row="1" column="3">
-     <widget class="QPushButton" name="officeDemo">
+    <item row="5" column="2">
+     <widget class="QPushButton" name="rsDemo">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
+        <verstretch>1</verstretch>
        </sizepolicy>
       </property>
       <property name="text">
-       <string>office_demo</string>
+       <string>RS_demo</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="1">
-     <widget class="QPushButton" name="sysManage">
+    <item row="1" column="4">
+     <widget class="QPushButton" name="openGLDemo">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
+        <horstretch>1</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
       <property name="text">
-       <string>系统管理</string>
+       <string>openGL_demo</string>
       </property>
      </widget>
     </item>
@@ -145,16 +138,138 @@
       </property>
      </widget>
     </item>
+    <item row="1" column="0">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
     <item row="2" column="1">
      <widget class="QPushButton" name="codeUi">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>代码UI</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="3">
+     <widget class="QPushButton" name="officeDemo">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>1</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>office_demo</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QPushButton" name="ExcelDemo_2">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>led_demo</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QPushButton" name="rs232Demo">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>RS232_demo</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="2">
+     <widget class="QPushButton" name="CustomButtonDemo">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>自定义控件</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2">
+     <widget class="QPushButton" name="tcpDemo">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>500</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>tcp_demo</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="4">
+     <widget class="QPushButton" name="TableDemo">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
       <property name="text">
-       <string>代码UI</string>
+       <string>table_demo</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="3">
+     <widget class="QPushButton" name="CustomButtonDemo_2">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>自定义控件2</string>
       </property>
      </widget>
     </item>
@@ -171,29 +286,29 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="1">
-     <spacer name="verticalSpacer">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="1" column="4">
-     <widget class="QPushButton" name="openGLDemo">
+    <item row="4" column="1">
+     <widget class="QPushButton" name="ExcelDemo">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
+        <verstretch>1</verstretch>
        </sizepolicy>
       </property>
       <property name="text">
-       <string>openGL_demo</string>
+       <string>excel_demo</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QPushButton" name="fileDemo">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>file_demo</string>
       </property>
      </widget>
     </item>
@@ -204,7 +319,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1202</width>
+     <width>971</width>
      <height>25</height>
     </rect>
    </property>

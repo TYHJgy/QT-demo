@@ -48,8 +48,8 @@
 **
 ****************************************************************************/
 
-#ifndef SLAVETHREAD_H
-#define SLAVETHREAD_H
+#ifndef MASTERTHREAD_H
+#define MASTERTHREAD_H
 
 #include <QMutex>
 #include <QThread>
@@ -64,10 +64,10 @@ public:
     explicit SlaveThread(QObject *parent = nullptr);
     ~SlaveThread();
 
-    void startSlave(const QString &portName, int waitTimeout, const QString &response);
+    void transaction(const QString &portName, int waitTimeout, const QString &request);
 
 signals:
-    void request(const QString &s);
+    void response(const QString &s);
     void error(const QString &s);
     void timeout(const QString &s);
 
@@ -75,11 +75,12 @@ private:
     void run() override;
 
     QString m_portName;
-    QString m_response;
+    QString m_request;
     int m_waitTimeout = 0;
     QMutex m_mutex;
+    QWaitCondition m_cond;
     bool m_quit = false;
 };
 //! [0]
 
-#endif // SLAVETHREAD_H
+#endif // MASTERTHREAD_H

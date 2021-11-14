@@ -1,4 +1,4 @@
-QT       += core gui sql widgets charts serialport
+QT       += core gui sql widgets serialport charts axcontainer
 QT       += network opengl
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -18,16 +18,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     client.cpp \
     codeuiform.cpp \
+    customtabstyle.cpp \
     dataanalyzeform.cpp \
     databaseOperation.cpp \
     dialogSerial.cpp \
     dialoglogin.cpp \
+    exceldemoform.cpp \
+    fileoperationform.cpp \
+    ledform.cpp \
     main.cpp \
     mainwindow.cpp \
     mainwindowdemo.cpp \
+    mybutton.cpp \
+    qsimpleled.cpp \
+    rsdemoform.cpp \
     server.cpp \
     slavethread.cpp \
     sysmanageform.cpp \
+    tableform.cpp \
+    tabwidget.cpp \
     tcpdemoform.cpp \
     themewidget.cpp \
     user.cpp
@@ -35,15 +44,24 @@ SOURCES += \
 HEADERS += \
     client.h \
     codeuiform.h \
+    customtabstyle.h \
     dataanalyzeform.h \
     databaseOperation.h \
     dialogSerial.h \
     dialoglogin.h \
+    exceldemoform.h \
+    fileoperationform.h \
+    ledform.h \
     mainwindow.h \
     mainwindowdemo.h \
+    mybutton.h \
+    qsimpleled.h \
+    rsdemoform.h \
     server.h \
     slavethread.h \
     sysmanageform.h \
+    tableform.h \
+    tabwidget.h \
     tcpdemoform.h \
     themewidget.h \
     user.h
@@ -52,9 +70,15 @@ FORMS += \
     codeuiform.ui \
     dataanalyzeform.ui \
     dialoglogin.ui \
+    exceldemoform.ui \
+    fileoperationform.ui \
+    ledform.ui \
     mainwindow.ui \
     mainwindowdemo.ui \
+    rsdemoform.ui \
     sysmanageform.ui \
+    tableform.ui \
+    tabwidget.ui \
     tcpdemoform.ui \
     themewidget.ui
 

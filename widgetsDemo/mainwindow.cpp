@@ -6,7 +6,15 @@
 #include "themewidget.h"
 #include "dialogSerial.h"
 #include "mainwindowdemo.h"
-//#include "myglwidget.h"
+#include "tableform.h"
+#include "exceldemoform.h"
+#include "mybutton.h"
+#include "customtabstyle.h"
+#include "ledform.h"
+#include "rsdemoform.h"
+#include "fileoperationform.h"
+#include "tabwidget.h"
+
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -48,19 +56,34 @@ void MainWindow::on_sysManage_clicked()
  */
 void MainWindow::on_dataAnalyze_clicked()
 {
-    DataAnalyzeForm * form = new DataAnalyzeForm;
+//    DataAnalyzeForm * form = new DataAnalyzeForm;
+    TabWidget * form = new TabWidget();
     form->setWindowModality(Qt::ApplicationModal);
     form->show();
 }
 
 /**
- * @brief 打开Dialog窗口
+ * @brief 打开对话框Dialog窗口
  */
 void MainWindow::on_DialogDemo_clicked()
 {
-    QDialog *dlg = new QDialog(this);
+//    QDialog *dlg = new QDialog(this);//基本对话框
+//    QColorDialog *dlg = new QColorDialog(this);   //颜色选择对话框
+//    QFileDialog *dlg = new QFileDialog(this);     //文件选择对话框
+//    QFontDialog *dlg = new QFontDialog(this);     //字体选择对话框
+//    QInputDialog *dlg = new QInputDialog(this);   //输入对话框
+//    QMessageBox *dlg = new QMessageBox(this);     //消息对话框
+    QProgressDialog *dlg = new QProgressDialog(this);     //进度条对话框
     dlg->setWindowModality(Qt::ApplicationModal);
     dlg->show();
+    if (dlg->exec()){
+//        qDebug() << dlg->selectedFiles();   //文件选择对话框
+//        qDebug() << dlg->selectedFont();    //字体选择对话框
+//        qDebug() << dlg->textValue();       //输入对话框
+        qDebug() << "";
+    }
+    //文件选择对话框
+//    qDebug() << QFileDialog::getOpenFileName(this,tr("Open Image"), "/home/jana", tr("Image Files (*.png *.jpg *.bmp)"));
 }
 
 /**
@@ -126,4 +149,100 @@ void MainWindow::on_openGLDemo_clicked()
 //    w->setWindowModality(Qt::ApplicationModal);
 //    w->resize(400, 300);
 //    w->show();
+}
+
+/**
+ * @brief MainWindow::on_TableDemo_clicked
+ * 1.table view demo
+ * 2.代码创建窗口
+ */
+void MainWindow::on_TableDemo_clicked()
+{
+    TableForm * w = new TableForm();
+    w->setWindowModality(Qt::ApplicationModal);
+    w->setWindowTitle("表格示例");
+
+    w->show();
+}
+
+
+//操作excel示例
+void MainWindow::on_ExcelDemo_clicked()
+{
+    ExcelDemoForm * w = new ExcelDemoForm();
+    w->setWindowModality(Qt::ApplicationModal);
+    w->setWindowTitle("Excel示例");
+
+
+
+    w->show();
+}
+
+//自定义控件
+void MainWindow::on_CustomButtonDemo_clicked()
+{
+    QWidget * w = new QWidget();
+    w->setWindowModality(Qt::ApplicationModal);
+    w->setWindowTitle("自定义控件");
+    w->resize(400, 300);
+    MyButton *mybtn = new MyButton(w);
+
+    w->show();
+}
+
+
+//自定义控件2
+void MainWindow::on_CustomButtonDemo_2_clicked()
+{
+    QWidget * w = new QWidget();
+    w->setWindowModality(Qt::ApplicationModal);
+    w->setWindowTitle("自定义控件");
+    w->resize(900, 700);
+
+    QTabWidget * tabWidget = new QTabWidget(w);
+    tabWidget->setTabPosition(QTabWidget::West);
+    tabWidget->tabBar()->setStyle(new CustomTabStyle);
+    tabWidget->setGeometry(QRect(0, 0, 500, 500));
+
+    QWidget *tab = new QWidget();
+    tab = new QWidget();
+    tab->setObjectName("789");
+    tabWidget->addTab(tab, QString());
+
+    QWidget *tab_2 = new QWidget();
+    tab_2 = new QWidget();
+    tab_2->setObjectName("123");
+    tabWidget->addTab(tab_2, QString());
+
+    w->show();
+}
+
+//自定义LEDdemo
+void MainWindow::on_ExcelDemo_2_clicked()
+{
+    LedForm * w = new LedForm();
+    w->setWindowModality(Qt::ApplicationModal);
+    w->setWindowTitle("LedForm");
+
+    w->show();
+}
+
+
+void MainWindow::on_rsDemo_clicked()
+{
+    RSDemoForm * w = new RSDemoForm();
+    w->setWindowModality(Qt::ApplicationModal);
+    w->setWindowTitle("RSDemoForm");
+
+    w->show();
+}
+
+//文件操作
+void MainWindow::on_fileDemo_clicked()
+{
+    FileOperationForm * w = new FileOperationForm();
+    w->setWindowModality(Qt::ApplicationModal);
+    w->setWindowTitle("RSDemoForm");
+
+    w->show();
 }

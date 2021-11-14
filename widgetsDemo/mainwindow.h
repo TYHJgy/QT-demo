@@ -5,6 +5,12 @@
 
 #include "tcpdemoform.h"
 
+#include <QColorDialog>
+#include <QFileDialog>
+#include <QFontDialog>
+#include <QInputDialog>
+#include <QMessageBox>
+#include <QProgressDialog>
 
 QT_BEGIN_NAMESPACE
 // 此处的MainWindow是命名空间Ui下的MainWindow，和当前文件定义的MainWindow不是同一个。
@@ -37,6 +43,20 @@ private slots:
     void on_MainWindowDemo_clicked();
 
     void on_openGLDemo_clicked();
+
+    void on_TableDemo_clicked();
+
+    void on_ExcelDemo_clicked();
+
+    void on_CustomButtonDemo_clicked();
+
+    void on_CustomButtonDemo_2_clicked();
+
+    void on_ExcelDemo_2_clicked();
+
+    void on_rsDemo_clicked();
+
+    void on_fileDemo_clicked();
 
 private:
     Ui::MainWindow *ui;
