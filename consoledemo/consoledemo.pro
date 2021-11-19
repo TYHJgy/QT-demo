@@ -21,8 +21,17 @@ SOURCES += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+INCLUDEPATH += \
+    D:/study/QT/QT-demo/libDemo/test1 \
+    D:/study/QT/QT-demo/libDemo/test2 \
+    D:/study/QT/QT-demo/libDemo/test3 \
 
 HEADERS += \
-    main.h
+    D:/study/QT/QT-demo/libDemo/test1/test1.h \
+    D:/study/QT/QT-demo/libDemo/test2/test2.h \
+    D:/study/QT/QT-demo/libDemo/test3/test3.h \
 
 QT += widgets
+
+
+LIBS += -LD:/study/QT/QT-demo/libDemo/ -ltest3 -ltest1 -ltest2
