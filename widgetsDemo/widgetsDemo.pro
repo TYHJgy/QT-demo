@@ -29,11 +29,13 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     mainwindowdemo.cpp \
+    mouserightdemoform.cpp \
     mybutton.cpp \
     qsimpleled.cpp \
     rsdemoform.cpp \
     server.cpp \
     slavethread.cpp \
+    styledemoform.cpp \
     sysmanageform.cpp \
     tableform.cpp \
     tabwidget.cpp \
@@ -54,11 +56,13 @@ HEADERS += \
     ledform.h \
     mainwindow.h \
     mainwindowdemo.h \
+    mouserightdemoform.h \
     mybutton.h \
     qsimpleled.h \
     rsdemoform.h \
     server.h \
     slavethread.h \
+    styledemoform.h \
     sysmanageform.h \
     tableform.h \
     tabwidget.h \
@@ -75,7 +79,9 @@ FORMS += \
     ledform.ui \
     mainwindow.ui \
     mainwindowdemo.ui \
+    mouserightdemoform.ui \
     rsdemoform.ui \
+    styledemoform.ui \
     sysmanageform.ui \
     tableform.ui \
     tabwidget.ui \
@@ -86,3 +92,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    img.qrc

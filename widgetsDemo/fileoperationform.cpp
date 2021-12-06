@@ -13,6 +13,7 @@ FileOperationForm::~FileOperationForm()
     delete ui;
 }
 
+//新建文件
 void FileOperationForm::on_newFile_clicked()
 {
     QString path = QFileDialog::getExistingDirectory(this, tr("Open Directory"), "/",
@@ -26,6 +27,7 @@ void FileOperationForm::on_newFile_clicked()
     file.close();
 }
 
+//读文件内容
 void FileOperationForm::on_readData_clicked()
 {
 

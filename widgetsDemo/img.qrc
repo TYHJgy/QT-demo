@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>image/7903/w8.ico</file>
+        <file>image/true2.jpg</file>
+    </qresource>
+</RCC>

@@ -14,7 +14,8 @@
 #include "rsdemoform.h"
 #include "fileoperationform.h"
 #include "tabwidget.h"
-
+#include "mouserightdemoform.h"
+#include "styledemoform.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -72,8 +73,10 @@ void MainWindow::on_DialogDemo_clicked()
 //    QFileDialog *dlg = new QFileDialog(this);     //文件选择对话框
 //    QFontDialog *dlg = new QFontDialog(this);     //字体选择对话框
 //    QInputDialog *dlg = new QInputDialog(this);   //输入对话框
-//    QMessageBox *dlg = new QMessageBox(this);     //消息对话框
-    QProgressDialog *dlg = new QProgressDialog(this);     //进度条对话框
+    QMessageBox *dlg = new QMessageBox(this);     //消息对话框
+    dlg->setText("我是消息对话框");
+    dlg->setWindowTitle("提示");
+//    QProgressDialog *dlg = new QProgressDialog(this);     //进度条对话框
     dlg->setWindowModality(Qt::ApplicationModal);
     dlg->show();
     if (dlg->exec()){
@@ -84,6 +87,9 @@ void MainWindow::on_DialogDemo_clicked()
     }
     //文件选择对话框
 //    qDebug() << QFileDialog::getOpenFileName(this,tr("Open Image"), "/home/jana", tr("Image Files (*.png *.jpg *.bmp)"));
+    //消息对话框
+    QMessageBox::question(this,tr("弹窗标题"),tr("弹窗内容"),QMessageBox::Ok | QMessageBox::Cancel,QMessageBox::Ok);
+
 }
 
 /**
@@ -244,5 +250,23 @@ void MainWindow::on_fileDemo_clicked()
     w->setWindowModality(Qt::ApplicationModal);
     w->setWindowTitle("RSDemoForm");
 
+    w->show();
+}
+
+void MainWindow::on_mouse_right_event_clicked()
+{
+    MouseRightDemoForm * w = new MouseRightDemoForm();
+    w->setWindowModality(Qt::ApplicationModal);
+    w->setWindowTitle("MouseRightDemoForm");
+
+    w->show();
+}
+
+//样式demo
+void MainWindow::on_style_demo_clicked()
+{
+    StyleDemoForm * w = new StyleDemoForm();
+    w->setWindowModality(Qt::ApplicationModal);
+    w->setWindowTitle("StyleDemoForm");
     w->show();
 }

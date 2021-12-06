@@ -149,10 +149,10 @@ void TableForm::on_pushButton_6_clicked()
     table->horizontalHeader()->setFont(font);
 
     //修改表头名字
-    QTableWidgetItem *item1 = new QTableWidgetItem("第1行");
-    QTableWidgetItem *item2 = new QTableWidgetItem("第2行");
-    QTableWidgetItem *item3 = new QTableWidgetItem("第3行");
-    QTableWidgetItem *item4 = new QTableWidgetItem("第4行");
+    QTableWidgetItem *item1 = new QTableWidgetItem("第1列");
+    QTableWidgetItem *item2 = new QTableWidgetItem("第2列");
+    QTableWidgetItem *item3 = new QTableWidgetItem("第3列");
+    QTableWidgetItem *item4 = new QTableWidgetItem("第4列");
     table->setHorizontalHeaderItem(0,item1);
     table->setHorizontalHeaderItem(1,item2);
     table->setHorizontalHeaderItem(2,item3);

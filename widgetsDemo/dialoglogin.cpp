@@ -16,6 +16,8 @@ DialogLogin::DialogLogin(QWidget *parent) :
     //连接数据库
     if(!DatabaseOperation::connectDatabase()){
         QMessageBox::warning(this,"警告","数据库连接失败",QMessageBox::Yes);
+    }else{
+        QMessageBox::warning(this,"警告","数据库连接成功",QMessageBox::Yes);
     }
 }
 

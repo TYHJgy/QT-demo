@@ -58,6 +58,10 @@ private slots:
 
     void on_fileDemo_clicked();
 
+    void on_mouse_right_event_clicked();
+
+    void on_style_demo_clicked();
+
 private:
     Ui::MainWindow *ui;
     TcpDemoForm * widget_tcp_demo;

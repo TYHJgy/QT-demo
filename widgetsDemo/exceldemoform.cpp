@@ -18,6 +18,8 @@ ExcelDemoForm::~ExcelDemoForm()
     delete ui;
 }
 
+
+//导出数据到excel
 void ExcelDemoForm::on_pushButton_clicked()
 {
    //获取保存路径
@@ -99,6 +101,8 @@ void ExcelDemoForm::on_pushButton_clicked()
    }
 }
 
+
+//合并单元格
 void ExcelDemoForm::on_pushButton_2_clicked()
 {
     //获取保存路径
@@ -199,4 +203,147 @@ void ExcelDemoForm::on_pushButton_3_clicked()
 
         qDebug() << "\n导出成功啦！！！";
     }
+}
+
+//选择文件，导入数据
+void ExcelDemoForm::on_pushButton_4_clicked()
+{
+
+    QVector<QVector<QString>> vecDatas = loadExcel("sheet1");
+//    for(int i=0;i<vecDatas.count();i++){
+//        QVector<QString> slist = vecDatas[i];
+//        qDebug() << vecDatas[i];
+//        for(int j=0;j<slist.count();j++){
+//            qDebug() << i << "+" << slist[j];
+//        }
+//    }
+
+    initHorizontalHeader(vecDatas[0].count());
+    for(QVector<QString> e : vecDatas){
+        insertRow(e);
+    }
+}
+
+//整页读取
+QVector<QVector<QString>> ExcelDemoForm::loadExcel(QString strSheetName)
+{
+    QVector<QVector<QString>> vecDatas;//获取所有数据
+    QString fileName = QFileDialog::getOpenFileName(this,tr("Open file"), "/", tr("excel Files (*.xlsx)"));
+    qDebug() << fileName;
+    QFile file(fileName);
+    if(!file.exists()){
+        qWarning() << "文件不存在";
+        return vecDatas;
+    }
+    QAxObject *excel = new QAxObject("Excel.Application");//excel应用程序
+    excel->dynamicCall("SetVisible(bool)", false); //true 表示操作文件时可见，false表示为不可见
+    QAxObject *workbooks = excel->querySubObject("WorkBooks");//所有excel文件
+    QAxObject *workbook = workbooks->querySubObject("Open(QString&)", fileName);//按照路径获取文件
+    QAxObject * worksheets = workbook->querySubObject("WorkSheets");//获取文件的所有sheet页
+    QAxObject * worksheet = worksheets->querySubObject("Item(QString)", strSheetName);//获取文件sheet页
+    if(nullptr == worksheet){
+        qWarning()<<strSheetName<<"Sheet页不存在。";
+        return vecDatas;
+    }
+    QAxObject * usedrange = worksheet->querySubObject("UsedRange");//有数据的矩形区域
+
+    //获取行数
+    QAxObject * rows = usedrange->querySubObject("Rows");
+    int nRows = rows->property("Count").toInt();
+    if(nRows <= 1){
+        qWarning()<<"无数据，跳过该文件";
+        return vecDatas;
+    }
+
+    //获取列数
+//    QAxObject * columns = usedrange->querySubObject("Columns");
+//    int nColumns = columns->property("Count").toInt();
+
+
+    QVariant var = usedrange->dynamicCall("Value");
+    foreach(QVariant varRow,var.toList()){
+        QVector<QString> vecDataRow;
+        foreach(QVariant var,varRow.toList()){
+            vecDataRow.push_back(var.toString());
+        }
+        vecDatas.push_back(vecDataRow);
+    }
+
+    //关闭文件
+    workbook->dynamicCall("Close()");
+    excel->dynamicCall("Quit()");
+    if (excel)
+    {
+        delete excel;
+        excel = NULL;
+    }
+
+    return vecDatas;
+}
+
+/**
+ * @brief TableForm::on_pushButton_6_clicked
+ *   修改列表头样式
+ */
+void ExcelDemoForm::initHorizontalHeader(int column)
+{
+    auto * table = ui->tableWidget;
+    for(int i=0;i<column;i++){
+        table->insertColumn(i);
+    }
+    //打印行数（数据行+1表头）
+    qDebug() << table->rowCount();
+
+    //设置表头背景色
+    table->horizontalHeader()->setStyleSheet("QHeaderView::section{background:lightblue;}");
+
+    //设置选中背景色
+    table->setStyleSheet("selection-background-color:lightblue;");
+
+    //表头字体加粗
+    QFont font =  table->horizontalHeader()->font();
+    font.setBold(true);
+    table->horizontalHeader()->setFont(font);
+
+    //修改表头名字
+    QTableWidgetItem *item1 = new QTableWidgetItem("第1列");
+    QTableWidgetItem *item2 = new QTableWidgetItem("第2列");
+    QTableWidgetItem *item3 = new QTableWidgetItem("第3列");
+    QTableWidgetItem *item4 = new QTableWidgetItem("第4列");
+    table->setHorizontalHeaderItem(0,item1);
+    table->setHorizontalHeaderItem(1,item2);
+    table->setHorizontalHeaderItem(2,item3);
+    table->setHorizontalHeaderItem(3,item4);
+    qDebug() << table->horizontalHeaderItem(0)->text();
+    qDebug() << table->horizontalHeaderItem(1)->text();
+    qDebug() << table->horizontalHeaderItem(2)->text();
+    qDebug() << table->horizontalHeaderItem(3)->text();
+
+    //列宽自适应table
+//    table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    table->horizontalHeader()->setSectionResizeMode(0,QHeaderView::ResizeToContents);
+
+}
+
+/**
+ * @brief TableForm::on_pushButton_7_clicked
+ * 新增一行数据
+ */
+void ExcelDemoForm::insertRow(QVector<QString> vecDataRow)
+{
+    auto * table = ui->tableWidget;
+
+    //新增一行（空行）
+    table->insertRow(table->rowCount());
+    int rowIdx = table->rowCount() - 1;
+
+    //添加一行数据
+
+    for(int i=0;i<vecDataRow.count();i++){
+        QTableWidgetItem *item = new QTableWidgetItem(vecDataRow[i]);
+        item->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+        table->setItem(rowIdx,i,item);
+    }
+
+
 }
