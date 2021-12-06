@@ -3,6 +3,7 @@
 
 #include <QApplication>
 
+//main分支
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
