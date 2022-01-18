@@ -42,12 +42,12 @@ void ExcelDemoForm::on_pushButton_clicked()
        QAxObject *worksheets = workbook->querySubObject("Sheets");
        //获取工作表集合的工作表1，即sheet1
        QAxObject *worksheet = worksheets->querySubObject("Item(int)",1);
-
+        workbook->dynamicCall("SaveAs(const QString&)",QDir::toNativeSeparators(filepath));//保存至filepath，注意一定要用QDir::toNativeSeparators将路径中的"/"转换为"\"，不然一定保存不了。
        QAxObject *cellA,*cellB,*cellC,*cellD;
        //设置标题
        int cellrow=1;
        //设置要操作的单元格，如A1
-       QString A="A"+QString::number(cellrow);
+       QString A=new QString(65) + QString::number(cellrow);
        QString B="B"+QString::number(cellrow);
        QString C="C"+QString::number(cellrow);
        QString D="D"+QString::number(cellrow);
@@ -56,6 +56,8 @@ void ExcelDemoForm::on_pushButton_clicked()
        cellB = worksheet->querySubObject("Range(QVariant, QVariant)",B);
        cellC = worksheet->querySubObject("Range(QVariant, QVariant)",C);
        cellD = worksheet->querySubObject("Range(QVariant, QVariant)",D);
+       //设置单元格文本格式
+       cellA->setProperty("NumberFormatLocal", "@");
        //设置单元格的表头值
        cellA->dynamicCall("SetValue(const QVariant&)",QVariant("1"));
        cellB->dynamicCall("SetValue(const QVariant&)",QVariant("1"));
@@ -83,7 +85,8 @@ void ExcelDemoForm::on_pushButton_clicked()
            cellrow++;
        }
 
-       workbook->dynamicCall("SaveAs(const QString&)",QDir::toNativeSeparators(filepath));//保存至filepath，注意一定要用QDir::toNativeSeparators将路径中的"/"转换为"\"，不然一定保存不了。
+//       workbook->dynamicCall("SaveAs(const QString&)",QDir::toNativeSeparators(filepath));//保存至filepath，注意一定要用QDir::toNativeSeparators将路径中的"/"转换为"\"，不然一定保存不了。
+       workbook->dynamicCall("Save()");
        workbook->dynamicCall("Close()");//关闭工作簿
        excel->dynamicCall("Quit()");//关闭excel
        delete excel;

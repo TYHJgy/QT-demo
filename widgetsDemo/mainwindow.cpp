@@ -16,6 +16,7 @@
 #include "tabwidget.h"
 #include "mouserightdemoform.h"
 #include "styledemoform.h"
+#include "gsform.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -87,6 +88,8 @@ void MainWindow::on_DialogDemo_clicked()
     }
     //文件选择对话框
 //    qDebug() << QFileDialog::getOpenFileName(this,tr("Open Image"), "/home/jana", tr("Image Files (*.png *.jpg *.bmp)"));
+    //路径选择对话框
+//    qDebug() << QFileDialog::getExistingDirectory(this, "选择路径","/");
     //消息对话框
     QMessageBox::question(this,tr("弹窗标题"),tr("弹窗内容"),QMessageBox::Ok | QMessageBox::Cancel,QMessageBox::Ok);
 
@@ -178,9 +181,6 @@ void MainWindow::on_ExcelDemo_clicked()
     ExcelDemoForm * w = new ExcelDemoForm();
     w->setWindowModality(Qt::ApplicationModal);
     w->setWindowTitle("Excel示例");
-
-
-
     w->show();
 }
 
@@ -266,6 +266,19 @@ void MainWindow::on_mouse_right_event_clicked()
 void MainWindow::on_style_demo_clicked()
 {
     StyleDemoForm * w = new StyleDemoForm();
+    w->setWindowModality(Qt::ApplicationModal);
+    w->setWindowTitle("StyleDemoForm");
+    w->show();
+}
+
+void MainWindow::on_officeDemo_clicked()
+{
+
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    GsForm * w = new GsForm();
     w->setWindowModality(Qt::ApplicationModal);
     w->setWindowTitle("StyleDemoForm");
     w->show();

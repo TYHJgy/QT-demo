@@ -62,6 +62,10 @@ private slots:
 
     void on_style_demo_clicked();
 
+    void on_officeDemo_clicked();
+
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     TcpDemoForm * widget_tcp_demo;

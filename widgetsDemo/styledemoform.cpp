@@ -2,6 +2,7 @@
 #include "ui_styledemoform.h"
 
 #include <QStyleFactory>
+#include <QMessageBox>
 
 StyleDemoForm::StyleDemoForm(QWidget *parent) :
     QWidget(parent),
@@ -39,4 +40,9 @@ StyleDemoForm::~StyleDemoForm()
 void StyleDemoForm::on_comboBox_activated(const QString &arg1)
 {
     QApplication::setStyle(QStyleFactory::create(arg1));
+}
+
+void StyleDemoForm::on_pushButton_7_clicked()
+{
+    QMessageBox::question(this,tr("弹窗标题"),tr("弹窗内容"),QMessageBox::Ok | QMessageBox::Cancel,QMessageBox::Ok);
 }

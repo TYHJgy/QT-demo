@@ -25,6 +25,7 @@ SOURCES += \
     dialoglogin.cpp \
     exceldemoform.cpp \
     fileoperationform.cpp \
+    gsform.cpp \
     ledform.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -53,6 +54,7 @@ HEADERS += \
     dialoglogin.h \
     exceldemoform.h \
     fileoperationform.h \
+    gsform.h \
     ledform.h \
     mainwindow.h \
     mainwindowdemo.h \
@@ -76,6 +78,7 @@ FORMS += \
     dialoglogin.ui \
     exceldemoform.ui \
     fileoperationform.ui \
+    gsform.ui \
     ledform.ui \
     mainwindow.ui \
     mainwindowdemo.ui \

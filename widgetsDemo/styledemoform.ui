@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1094</width>
+    <width>1523</width>
     <height>725</height>
    </rect>
   </property>
@@ -19,17 +19,30 @@ QComboBox, QLineEdit, QSpinBox, QTextEdit, QListView {
     background-color: cornsilk;
     selection-color: #0a214c; 
     selection-background-color: #C19A6B;
+}
+
+QPushButton#pushButton_8{
+	background-color: rgb(147, 147, 147);
+	left: 20px;
+}
+QPushButton#pushButton_5{
+	icon:url(:/image/image/7903/w8.ico);
+}
+
+QMessageBox {
+	dialogbuttonbox-buttons-have-icons: true;
+	dialog-ok-icon: url(:/image/image/7903/w8.ico);
+	dialog-cancel-icon: url(:/image/image/7903/w8.ico);
+}
+
+QDialogButtonBox { 
+	dialogbuttonbox-buttons-have-icons: 1; 
+    dialog-cancel-icon: url(:/image/image/7903/w8.ico),
+                        url(:/image/image/7903/w8.ico) disabled;
 }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>应用主题样式</string>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="2">
+   <item row="13" column="2">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -42,43 +55,73 @@ QComboBox, QLineEdit, QSpinBox, QTextEdit, QListView {
      </property>
     </spacer>
    </item>
+   <item row="1" column="2">
+    <widget class="QPushButton" name="pushButton">
+     <property name="styleSheet">
+      <string notr="true">icon-size:10px</string>
+     </property>
+     <property name="text">
+      <string>PushButton</string>
+     </property>
+     <property name="icon">
+      <iconset resource="img.qrc">
+       <normaloff>:/image/image/7903/w8.ico</normaloff>:/image/image/7903/w8.ico</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3" rowspan="4">
+    <widget class="QTableWidget" name="tableWidget">
+     <property name="styleSheet">
+      <string notr="true">QTableWidget {
+    selection-background-color: qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,
+                                stop: 0 #FF92BB, stop: 1 white);	
+	alternate-background-color: rgb(0, 255, 127);
+	background-color: rgb(255, 255, 255);
+	alternate-background-color: rgb(255, 255, 127);
+	
+}
+QTableWidget QTableCornerButton::section {
+    background: red;
+    border: 2px outset red;
+}
+QTableWidget::indicator:unchecked {
+    background-color: #d7d6d5
+}
+/*这里是表格表头样式*/
+QHeaderView::section {
+	background-color: rgb(85, 85, 255);
+    border:0px solid #E0DDDC;   /*先把边框宽度设为0，即隐藏所有表头边框*/
+    border-bottom:1px solid #E0DDDC;/*然后只显示下边框，因为上边框和左右边框是整个Table的边框，都显示会有2px的边框宽度*/
+    height:30px;                /*表头高度*/
+	width:30px;
+}
+</string>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="rowCount">
+      <number>6</number>
+     </property>
+     <property name="columnCount">
+      <number>4</number>
+     </property>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <column/>
+     <column/>
+     <column/>
+     <column/>
+    </widget>
+   </item>
    <item row="2" column="0" colspan="2">
     <widget class="QLineEdit" name="lineEdit_2">
      <property name="styleSheet">
       <string notr="true"/>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="2">
-    <widget class="QPushButton" name="pushButton_7">
-     <property name="styleSheet">
-      <string notr="true">QPushButton#pushButton_7::menu-indicator {
-	image: url(:/image/image/7903/w8.ico);
-}
-QPushButton::menu-indicator {
-    image: url(myindicator.png);
-    subcontrol-position: right center;
-    subcontrol-origin: padding;
-    left: -2px;
-}</string>
-     </property>
-     <property name="text">
-      <string>PushButton</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="2">
-    <widget class="QPushButton" name="pushButton_4">
-     <property name="styleSheet">
-      <string notr="true">width: 30px;
-border: 5px solid green;
-padding: 5px;
-margin: 5px;
-border-style:none;
-border-left-style:solid;</string>
-     </property>
-     <property name="text">
-      <string>PushButton</string>
      </property>
     </widget>
    </item>
@@ -101,40 +144,89 @@ border-left-style:solid;</string>
      </item>
     </widget>
    </item>
-   <item row="6" column="4">
-    <widget class="QGroupBox" name="groupBox">
+   <item row="6" column="2">
+    <widget class="QPushButton" name="pushButton_5">
      <property name="styleSheet">
-      <string notr="true">QGroupBox {
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #E0E0E0, stop: 1 #FFFFFF);
-    border: 2px solid gray;
-    border-radius: 5px;
-    margin-top: 1ex; /* leave space at the top for the title */
-}
+      <string notr="true">    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 
-QGroupBox::title {
-    subcontrol-origin: margin;
-    subcontrol-position: top center; /* position at the top center */
-    padding: 0 3px;
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #FF0ECE, stop: 1 #FFFFFF);
-}
-
-QGroupBox::indicator {
-    width: 13px;
-    height: 13px;
-}
-
-QGroupBox::indicator:unchecked {
-    mage: url(:/image/image/7903/w8.ico);
-}</string>
+icon:url(:/image/image/7903/w8.ico);
+icon-size:15px;</string>
      </property>
-     <property name="title">
-      <string>GroupBox</string>
+     <property name="text">
+      <string>PushButton</string>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>10</width>
+       <height>10</height>
+      </size>
      </property>
     </widget>
    </item>
-   <item row="6" column="2">
+   <item row="10" column="3" colspan="2">
+    <widget class="QTabWidget" name="tabWidget_2">
+     <property name="styleSheet">
+      <string notr="true">QTabWidget::pane { 
+    border-top: 2px solid #C2C7CB;
+}
+QTabWidget::tab-bar {
+    
+    alignment: center;
+}
+
+QTabBar::tab:selected{
+	
+	background-color: rgb(85, 0, 0);
+}
+QTabBar::tab:hover {
+	
+	background-color: rgb(85, 0, 0);
+}
+
+QTabBar::tab {
+	
+	background-color: rgb(255, 0, 0);
+    border: 2px solid #C4C4C3;
+    border-bottom-color: #C2C7CB; /* same as the pane color */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    min-width: 15ex;
+    padding: 2px;
+}</string>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>Tab 1</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_4">
+      <attribute name="title">
+       <string>Tab 2</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_5">
+      <attribute name="title">
+       <string>页</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_6">
+      <attribute name="title">
+       <string>页</string>
+      </attribute>
+     </widget>
+    </widget>
+   </item>
+   <item row="10" column="2">
     <widget class="QPushButton" name="pushButton_6">
      <property name="styleSheet">
       <string notr="true">QPushButton#pushButton_6{	width:100px;
@@ -161,80 +253,22 @@ QGroupBox::indicator:unchecked {
      </property>
     </widget>
    </item>
-   <item row="5" column="2">
-    <widget class="QPushButton" name="pushButton_5">
-     <property name="styleSheet">
-      <string notr="true">    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;</string>
-     </property>
-     <property name="text">
-      <string>PushButton</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <widget class="QCheckBox" name="checkBox">
-     <property name="styleSheet">
-      <string notr="true">QCheckBox {
-    spacing: 10px;
-}
-
-QCheckBox::indicator {
-    width: 30px;
-    height: 30px;
-}</string>
-     </property>
-     <property name="text">
-      <string>CheckBox</string>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="0" colspan="2">
     <widget class="QLineEdit" name="lineEdit"/>
    </item>
-   <item row="3" column="2">
-    <widget class="QPushButton" name="pushButton_3">
+   <item row="4" column="2">
+    <widget class="QPushButton" name="pushButton_4">
+     <property name="styleSheet">
+      <string notr="true">width: 30px;
+border: 5px solid green;
+padding: 5px;
+margin: 5px;
+border-style:none;
+border-left-style:solid;</string>
+     </property>
      <property name="text">
       <string>PushButton</string>
      </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QComboBox" name="comboBox_3">
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <item>
-      <property name="text">
-       <string>嗷嗷的</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>是是是</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>三四十万</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>达到官方</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>大得多</string>
-      </property>
-     </item>
     </widget>
    </item>
    <item row="5" column="0">
@@ -290,125 +324,32 @@ QComboBox:!editable:on, QComboBox::drop-down:editable:on {
      </item>
     </widget>
    </item>
-   <item row="1" column="2">
-    <widget class="QPushButton" name="pushButton">
-     <property name="styleSheet">
-      <string notr="true"/>
+   <item row="7" column="0">
+    <widget class="QPushButton" name="pushButton_8">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>1</verstretch>
+      </sizepolicy>
      </property>
      <property name="text">
       <string>PushButton</string>
      </property>
-     <property name="icon">
-      <iconset resource="img.qrc">
-       <normaloff>:/image/image/7903/w8.ico</normaloff>:/image/image/7903/w8.ico</iconset>
-     </property>
     </widget>
    </item>
-   <item row="2" column="4" rowspan="3">
-    <widget class="QTabWidget" name="tabWidget">
+   <item row="3" column="2">
+    <widget class="QPushButton" name="pushButton_3">
      <property name="styleSheet">
-      <string notr="true">border: 5px solid green;
-margin: 15px;
-border-left-style:solid;</string>
-     </property>
-     <property name="currentIndex">
-      <number>1</number>
-     </property>
-     <widget class="QWidget" name="tab">
-      <attribute name="title">
-       <string>Tab 1</string>
-      </attribute>
-     </widget>
-     <widget class="QWidget" name="tab_2">
-      <attribute name="title">
-       <string>Tab 2</string>
-      </attribute>
-     </widget>
-    </widget>
-   </item>
-   <item row="2" column="2">
-    <widget class="QPushButton" name="pushButton_2">
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-	image: url(:/image/image/7903/w8.ico);
-    background-color: transparent;
-    border-style: none;
-    border-width: 2px;
-    border-radius: 45px;
-    border-color: beige;
-    font: bold 14px;
-    min-width: 5em;
-    min-height: 5em;
-    padding: 10px;
-}</string>
+      <string notr="true">image: url(:/image/image/7903/w8.ico);
+image-position:left;
+text-align:right;</string>
      </property>
      <property name="text">
-      <string>Button</string>
+      <string>PushButton</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="4">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="8" column="2">
-    <widget class="QDial" name="dial"/>
-   </item>
-   <item row="1" column="3" rowspan="4">
-    <widget class="QTableWidget" name="tableWidget">
-     <property name="styleSheet">
-      <string notr="true">QTableWidget {
-    selection-background-color: qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,
-                                stop: 0 #FF92BB, stop: 1 white);
-	
-	
-	alternate-background-color: rgb(0, 255, 127);
-
-	background-color: rgb(0, 255, 255);
-
-	
-	alternate-background-color: rgb(255, 255, 127);
-
-
-}
-QTableWidget QTableCornerButton::section {
-    background: red;
-    border: 2px outset red;
-}
-QTableWidget::indicator:unchecked {
-    background-color: #d7d6d5
-}</string>
-     </property>
-     <property name="alternatingRowColors">
-      <bool>true</bool>
-     </property>
-     <property name="rowCount">
-      <number>6</number>
-     </property>
-     <property name="columnCount">
-      <number>3</number>
-     </property>
-     <row/>
-     <row/>
-     <row/>
-     <row/>
-     <row/>
-     <row/>
-     <column/>
-     <column/>
-     <column/>
-    </widget>
-   </item>
-   <item row="5" column="3">
+   <item row="9" column="3">
     <widget class="QListWidget" name="listWidget">
      <item>
       <property name="text">
@@ -435,6 +376,188 @@ QTableWidget::indicator:unchecked {
        <string>多大点事</string>
       </property>
      </item>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>应用主题样式</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="2">
+    <widget class="QPushButton" name="pushButton_7">
+     <property name="styleSheet">
+      <string notr="true">icon: url(:/image/image/7903/w8.ico);</string>
+     </property>
+     <property name="text">
+      <string>messgeBoxIcon</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="4">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="styleSheet">
+      <string notr="true">QGroupBox {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #E0E0E0, stop: 1 #FFFFFF);
+    border: 2px solid gray;
+    border-radius: 5px;
+    margin-top: 1ex; /* leave space at the top for the title */
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center; /* position at the top center */
+    padding: 0 3px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #FF0ECE, stop: 1 #FFFFFF);
+}
+
+QGroupBox::indicator {
+    width: 13px;
+    height: 13px;
+}
+
+QGroupBox::indicator:unchecked {
+    mage: url(:/image/image/7903/w8.ico);
+}</string>
+     </property>
+     <property name="title">
+      <string>GroupBox</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="2">
+       <widget class="QPushButton" name="pushButton_10">
+        <property name="text">
+         <string>PushButton</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="pushButton_9">
+        <property name="text">
+         <string>PushButton</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QPushButton" name="pushButton_11">
+        <property name="text">
+         <string>PushButton</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	image: url(:/image/image/7903/w8.ico);
+    background-color: transparent;
+    border-style: none;
+    border-width: 2px;
+    border-radius: 45px;
+    border-color: beige;
+    font: bold 14px;
+    min-width: 5em;
+    min-height: 5em;
+    padding: 10px;
+}</string>
+     </property>
+     <property name="text">
+      <string>Button</string>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="2">
+    <widget class="QDial" name="dial"/>
+   </item>
+   <item row="3" column="0">
+    <widget class="QCheckBox" name="checkBox">
+     <property name="styleSheet">
+      <string notr="true">QCheckBox {
+    spacing: 10px;
+}
+
+QCheckBox::indicator {
+    width: 30px;
+    height: 30px;
+}</string>
+     </property>
+     <property name="text">
+      <string>CheckBox</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QComboBox" name="comboBox_3">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <item>
+      <property name="text">
+       <string>嗷嗷的</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>是是是</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>三四十万</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>达到官方</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>大得多</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="8" column="0">
+    <widget class="QPushButton" name="pushButton_12">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>2</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>PushButton</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1" rowspan="2">
+    <widget class="QPushButton" name="pushButton_13">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>PushButton</string>
+     </property>
     </widget>
    </item>
   </layout>

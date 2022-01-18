@@ -26,7 +26,7 @@ private slots:
     void on_openSerial_stateChanged(int arg1);
 
     void on_sendData_clicked();
-
+    void receiveData();
 private:
     Ui::RSDemoForm *ui;
     QSerialPort serial;

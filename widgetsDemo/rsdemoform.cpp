@@ -1,7 +1,7 @@
 ﻿#include "rsdemoform.h"
 #include "ui_rsdemoform.h"
 
-
+#include <QObject>
 
 
 RSDemoForm::RSDemoForm(QWidget *parent) :
@@ -53,18 +53,26 @@ void RSDemoForm::on_openSerial_stateChanged(int arg1)
         qDebug() << "串口打开错误";
         return;
     }
+
+    QObject::connect(&serial, &QSerialPort::readyRead,this, &RSDemoForm::receiveData);
+
     qDebug() << "串口打开成功:" << serial.portName();
     qDebug() << "波特率:" << serial.baudRate();
-    qDebug() << "数据位:" << serial.dataBits();;
-    qDebug() << "停止位:" << serial.stopBits();;
-    qDebug() << "奇偶校验位:" << serial.parity();;
+    qDebug() << "数据位:" << serial.dataBits();
+    qDebug() << "停止位:" << serial.stopBits();
+    qDebug() << "奇偶校验位:" << serial.parity();
 }
 
 //发送数据
 void RSDemoForm::on_sendData_clicked()
 {
+    qint16 num = 0x55AA;
+    qDebug() << num;
+    qDebug() << "16进制大写输出" << QString("%1").arg(num,8,16,QLatin1Char('0')).toUpper();//不足8位补0
     //发送数据
-    QString currentRequest = "hello rs232";
+    QString currentRequest = ui->textEdit->toPlainText();
+
+    qDebug() << "发送:" << currentRequest;
     const QByteArray requestData = currentRequest.toUtf8();
     serial.write(requestData);
 
@@ -75,17 +83,36 @@ void RSDemoForm::on_sendData_clicked()
         //这个函数会阻塞，直到有新的数据可以读取
         if (serial.waitForReadyRead(currentWaitTimeout)) {
             QByteArray responseData = serial.readAll();
-            while (serial.waitForReadyRead(10))
+            qDebug()<< "size:"  <<responseData.size();
+            while (serial.waitForReadyRead(10)){
                 responseData += serial.readAll();
-
+                qDebug()<< "size:"  <<responseData.size();
+            }
             const QString response = QString::fromUtf8(responseData);
-            qDebug() << response;
+            qDebug()<< "接收:"  << response;
+            ui->textEdit_2->setPlainText(response);
         } else {
             qDebug() << "waitForReadyRead";
         }
     } else {
         qDebug() << "waitForBytesWritten";
     }
+}
 
-    qDebug() << "jieshu";
+void RSDemoForm::receiveData()
+{
+    qDebug() << "receiveData";
+    if (serial.waitForReadyRead(100)) {
+        QByteArray responseData = serial.readAll();
+        qDebug()<< "size:"  <<responseData.size();
+        while (serial.waitForReadyRead(100)){
+            responseData += serial.readAll();
+            qDebug()<< "size2:"  <<responseData.size();
+        }
+        const QString response = QString::fromUtf8(responseData);
+        qDebug()<< "接收:"  << response;
+        ui->textEdit_2->setPlainText(response);
+    } else {
+        qDebug() << "waitForReadyRead";
+    }
 }

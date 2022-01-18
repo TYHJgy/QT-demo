@@ -18,6 +18,8 @@ public:
 private slots:
     void on_comboBox_activated(const QString &arg1);
 
+    void on_pushButton_7_clicked();
+
 private:
     Ui::StyleDemoForm *ui;
 };
