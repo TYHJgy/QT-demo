@@ -1,5 +1,6 @@
 QT       += core gui sql widgets serialport charts axcontainer
 QT       += network opengl
+QT       += multimedia
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -16,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    audiorecorderform.cpp \
     client.cpp \
     codeuiform.cpp \
     customtabstyle.cpp \
@@ -31,6 +33,7 @@ SOURCES += \
     mainwindow.cpp \
     mainwindowdemo.cpp \
     mouserightdemoform.cpp \
+    musicplayerform.cpp \
     mybutton.cpp \
     qsimpleled.cpp \
     rsdemoform.cpp \
@@ -42,9 +45,11 @@ SOURCES += \
     tabwidget.cpp \
     tcpdemoform.cpp \
     themewidget.cpp \
+    thirddform.cpp \
     user.cpp
 
 HEADERS += \
+    audiorecorderform.h \
     client.h \
     codeuiform.h \
     customtabstyle.h \
@@ -59,6 +64,7 @@ HEADERS += \
     mainwindow.h \
     mainwindowdemo.h \
     mouserightdemoform.h \
+    musicplayerform.h \
     mybutton.h \
     qsimpleled.h \
     rsdemoform.h \
@@ -70,9 +76,11 @@ HEADERS += \
     tabwidget.h \
     tcpdemoform.h \
     themewidget.h \
+    thirddform.h \
     user.h
 
 FORMS += \
+    audiorecorderform.ui \
     codeuiform.ui \
     dataanalyzeform.ui \
     dialoglogin.ui \
@@ -83,13 +91,15 @@ FORMS += \
     mainwindow.ui \
     mainwindowdemo.ui \
     mouserightdemoform.ui \
+    musicplayerform.ui \
     rsdemoform.ui \
     styledemoform.ui \
     sysmanageform.ui \
     tableform.ui \
     tabwidget.ui \
     tcpdemoform.ui \
-    themewidget.ui
+    themewidget.ui \
+    thirddform.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -17,7 +17,9 @@
 #include "mouserightdemoform.h"
 #include "styledemoform.h"
 #include "gsform.h"
-
+#include "musicplayerform.h"
+#include "audiorecorderform.h"
+#include "thirddform.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -113,8 +115,6 @@ void MainWindow::on_codeUi_clicked()
 //    form->setWindowModality(Qt::ApplicationModal);
     form->show();
 }
-
-
 
 /**
  * @brief 打开chart_demo窗口
@@ -281,5 +281,40 @@ void MainWindow::on_pushButton_clicked()
     GsForm * w = new GsForm();
     w->setWindowModality(Qt::ApplicationModal);
     w->setWindowTitle("StyleDemoForm");
+    w->show();
+}
+
+//打开多媒体测试(音乐播放器)
+void MainWindow::on_multimedia_clicked()
+{
+    MusicPlayerForm * w = new MusicPlayerForm();
+    w->setWindowModality(Qt::ApplicationModal);
+    w->setWindowTitle("音乐播放器");
+    w->show();
+}
+
+
+//打开录音设备
+void MainWindow::on_audioRecorder_clicked()
+{
+    AudioRecorderForm * w = new AudioRecorderForm();
+    w->setWindowModality(Qt::ApplicationModal);
+    w->setWindowTitle("录音机");
+    w->show();
+}
+
+
+//打开视频播放器
+void MainWindow::on_videoPlayer_clicked()
+{
+
+}
+
+//打开三D界面
+void MainWindow::on_pushButton_3D_clicked()
+{
+    ThirdDForm * w = new ThirdDForm();
+    w->setWindowModality(Qt::ApplicationModal);
+    w->setWindowTitle("三维图形");
     w->show();
 }

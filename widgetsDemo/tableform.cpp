@@ -20,6 +20,8 @@ TableForm::TableForm(QWidget *parent) :
     ui->setupUi(this);
     //createTableView();
     ui->tabWidget->setTabPosition(QTabWidget::West);
+
+    //给tabWidget设置新样式
     ui->tabWidget->tabBar()->setStyle(new CustomTabStyle);
 }
 

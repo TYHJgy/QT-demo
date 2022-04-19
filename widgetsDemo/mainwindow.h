@@ -66,6 +66,14 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_multimedia_clicked();
+
+    void on_audioRecorder_clicked();
+
+    void on_videoPlayer_clicked();
+
+    void on_pushButton_3D_clicked();
+
 private:
     Ui::MainWindow *ui;
     TcpDemoForm * widget_tcp_demo;
