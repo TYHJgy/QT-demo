@@ -74,6 +74,9 @@ private slots:
 
     void on_pushButton_3D_clicked();
 
+
+    void on_udpDemo_clicked();
+
 private:
     Ui::MainWindow *ui;
     TcpDemoForm * widget_tcp_demo;

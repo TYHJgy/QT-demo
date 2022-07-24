@@ -20,6 +20,7 @@
 #include "musicplayerform.h"
 #include "audiorecorderform.h"
 #include "thirddform.h"
+#include "myudpdemoform.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -316,5 +317,15 @@ void MainWindow::on_pushButton_3D_clicked()
     ThirdDForm * w = new ThirdDForm();
     w->setWindowModality(Qt::ApplicationModal);
     w->setWindowTitle("三维图形");
+    w->show();
+}
+
+
+
+void MainWindow::on_udpDemo_clicked()
+{
+    MyUdpDemoForm * w = new MyUdpDemoForm();
+    //w->setWindowModality(Qt::ApplicationModal);
+    w->setWindowTitle("MyUdpDemoForm");
     w->show();
 }

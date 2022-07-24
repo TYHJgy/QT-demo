@@ -35,6 +35,7 @@ SOURCES += \
     mouserightdemoform.cpp \
     musicplayerform.cpp \
     mybutton.cpp \
+    myudpdemoform.cpp \
     qsimpleled.cpp \
     rsdemoform.cpp \
     server.cpp \
@@ -46,6 +47,8 @@ SOURCES += \
     tcpdemoform.cpp \
     themewidget.cpp \
     thirddform.cpp \
+    udpclientform.cpp \
+    udptestform.cpp \
     user.cpp
 
 HEADERS += \
@@ -66,6 +69,7 @@ HEADERS += \
     mouserightdemoform.h \
     musicplayerform.h \
     mybutton.h \
+    myudpdemoform.h \
     qsimpleled.h \
     rsdemoform.h \
     server.h \
@@ -77,6 +81,8 @@ HEADERS += \
     tcpdemoform.h \
     themewidget.h \
     thirddform.h \
+    udpclientform.h \
+    udptestform.h \
     user.h
 
 FORMS += \
@@ -92,6 +98,7 @@ FORMS += \
     mainwindowdemo.ui \
     mouserightdemoform.ui \
     musicplayerform.ui \
+    myudpdemoform.ui \
     rsdemoform.ui \
     styledemoform.ui \
     sysmanageform.ui \
@@ -99,7 +106,9 @@ FORMS += \
     tabwidget.ui \
     tcpdemoform.ui \
     themewidget.ui \
-    thirddform.ui
+    thirddform.ui \
+    udpclientform.ui \
+    udptestform.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
