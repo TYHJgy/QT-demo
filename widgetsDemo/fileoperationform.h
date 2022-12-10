@@ -26,6 +26,9 @@ private slots:
 
     void on_removeFile_clicked();
 
+    void on_copyFile_clicked();
+
+
 private:
     Ui::FileOperationForm *ui;
 };

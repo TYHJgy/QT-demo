@@ -24,6 +24,8 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    void on_copySheet_clicked();
+
 private:
     Ui::ExcelDemoForm *ui;
     QVector<QVector<QString>> loadExcel(QString strSheetName);

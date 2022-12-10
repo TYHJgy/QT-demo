@@ -350,3 +350,40 @@ void ExcelDemoForm::insertRow(QVector<QString> vecDataRow)
 
 
 }
+
+
+//复制sheet
+void ExcelDemoForm::on_copySheet_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(this,tr("Open file"), "/", tr("excel Files (*.xlsx)"));
+    qDebug() << fileName;
+    QFile file(fileName);
+    if(!file.exists()){
+        qWarning() << "文件不存在";
+        return ;
+    }
+    QString strSheetName = "sheet1";
+    QAxObject *excel = new QAxObject("Excel.Application");//excel应用程序
+    excel->dynamicCall("SetVisible(bool)", true); //true 表示操作文件时可见，false表示为不可见
+    QAxObject *workbooks = excel->querySubObject("WorkBooks");//所有excel文件
+    QAxObject *workbook = workbooks->querySubObject("Open(QString&)", fileName);//按照路径获取文件
+    QAxObject * worksheets = workbook->querySubObject("WorkSheets");//获取文件的所有sheet页
+    QAxObject * worksheet = worksheets->querySubObject("Item(QString)", strSheetName);//获取文件sheet页
+    if(nullptr == worksheet){
+        qWarning()<<strSheetName<<"Sheet页不存在。";
+        return;
+    }
+    QAxObject* newSheet = worksheets->querySubObject("Add()");
+
+    //保存
+    workbook->dynamicCall("SaveAs(const QString&)",QDir::toNativeSeparators(fileName));
+
+    //关闭文件
+    workbook->dynamicCall("Close()");
+    excel->dynamicCall("Quit()");
+    if (excel)
+    {
+        delete excel;
+        excel = NULL;
+    }
+}

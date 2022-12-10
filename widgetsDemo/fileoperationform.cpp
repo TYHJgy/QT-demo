@@ -50,10 +50,24 @@ void FileOperationForm::on_readData_clicked()
 //删除文件
 void FileOperationForm::on_removeFile_clicked()
 {
-    QString fileName = QFileDialog::getOpenFileName(this,tr("Open file"), "/", tr("txt Files (*.txt)"));
+    QString fileName = QFileDialog::getOpenFileName(this,tr("Open file"), "~/", tr("txt Files (*.txt)"));
     qDebug() << fileName;
     QFile file(fileName);
     qDebug() << "文件存在" << file.exists();
     file.remove();
     qDebug() << "文件存在" << file.exists();
 }
+
+//复制文件
+void FileOperationForm::on_copyFile_clicked()
+{
+    QString newfileName = "./test2.txt";
+    QString fileName = "./test.txt";
+    QFile file(fileName);
+    qDebug() << "文件存在" << file.exists();
+    QFile::copy(fileName,newfileName);
+    QFile file2(newfileName);
+    qDebug() << "文件存在" << file2.exists();
+}
+
+

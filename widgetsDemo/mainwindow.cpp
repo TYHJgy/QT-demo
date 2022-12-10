@@ -21,6 +21,7 @@
 #include "audiorecorderform.h"
 #include "thirddform.h"
 #include "myudpdemoform.h"
+#include "meiliform.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -327,5 +328,13 @@ void MainWindow::on_udpDemo_clicked()
     MyUdpDemoForm * w = new MyUdpDemoForm();
     //w->setWindowModality(Qt::ApplicationModal);
     w->setWindowTitle("MyUdpDemoForm");
+    w->show();
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    MeiliForm * w = new MeiliForm();
+    w->setWindowModality(Qt::ApplicationModal);
+//    w->setWindowTitle("MeiliForm");
     w->show();
 }

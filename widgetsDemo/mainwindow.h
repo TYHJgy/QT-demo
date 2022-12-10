@@ -77,6 +77,8 @@ private slots:
 
     void on_udpDemo_clicked();
 
+    void on_pushButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     TcpDemoForm * widget_tcp_demo;

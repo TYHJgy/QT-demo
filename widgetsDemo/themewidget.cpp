@@ -43,6 +43,7 @@
 #include <QtCharts/QScatterSeries>
 #include <QtCharts/QAreaSeries>
 #include <QtCharts/QLegend>
+#include <QtCharts/QValueAxis>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QComboBox>

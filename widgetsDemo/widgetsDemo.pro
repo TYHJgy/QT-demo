@@ -32,6 +32,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     mainwindowdemo.cpp \
+    meiliform.cpp \
     mouserightdemoform.cpp \
     musicplayerform.cpp \
     mybutton.cpp \
@@ -66,6 +67,7 @@ HEADERS += \
     ledform.h \
     mainwindow.h \
     mainwindowdemo.h \
+    meiliform.h \
     mouserightdemoform.h \
     musicplayerform.h \
     mybutton.h \
@@ -96,6 +98,7 @@ FORMS += \
     ledform.ui \
     mainwindow.ui \
     mainwindowdemo.ui \
+    meiliform.ui \
     mouserightdemoform.ui \
     musicplayerform.ui \
     myudpdemoform.ui \
