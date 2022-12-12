@@ -1,0 +1,30 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>icon/add.png</file>
+        <file>icon/add2.png</file>
+        <file>icon/add3.png</file>
+        <file>icon/delete.png</file>
+        <file>icon/delete2.png</file>
+        <file>icon/fontAdd.png</file>
+        <file>icon/fontAdd2.png</file>
+        <file>icon/jian.png</file>
+        <file>icon/jian2.png</file>
+        <file>icon/jian3.png</file>
+        <file>icon/open.png</file>
+        <file>icon/othersave.png</file>
+        <file>icon/prelook.png</file>
+        <file>icon/save.png</file>
+        <file>icon/T-left.png</file>
+        <file>icon/T-left2.png</file>
+        <file>icon/T-left3.png</file>
+        <file>icon/T-left4.png</file>
+        <file>icon/T-right.png</file>
+        <file>icon/T-right2.png</file>
+        <file>icon/T-right3.png</file>
+        <file>icon/T-right4.png</file>
+        <file>icon/T-zhon.png</file>
+        <file>icon/T-zhon2.png</file>
+        <file>icon/T-zhon3.png</file>
+        <file>icon/T-zhon4.png</file>
+    </qresource>
+</RCC>
