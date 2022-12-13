@@ -119,7 +119,9 @@ void MainWindow::on_listView_2_clicked(const QModelIndex &index)
 
 void MainWindow::on_btnOpenStdWin_clicked()
 {
-    StandardItemWindow * w = new StandardItemWindow();
+    StandardItemWindow * w = new StandardItemWindow(this);
+    //设置子窗口属性，在子窗口关闭之后，释放子窗口的资源(释放指针)
+    w->setAttribute(Qt::WA_DeleteOnClose);
     w->setWindowModality(Qt::ApplicationModal);
     w->setWindowTitle("标准数据模型");
     w->show();
