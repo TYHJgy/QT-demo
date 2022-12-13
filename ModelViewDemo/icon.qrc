@@ -26,5 +26,9 @@
         <file>icon/T-zhon2.png</file>
         <file>icon/T-zhon3.png</file>
         <file>icon/T-zhon4.png</file>
+        <file>icon/insert.png</file>
+        <file>icon/enter2.png</file>
+        <file>icon/exit2.png</file>
+        <file>icon/exit5.png</file>
     </qresource>
 </RCC>
