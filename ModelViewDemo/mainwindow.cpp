@@ -126,3 +126,24 @@ void MainWindow::on_btnOpenStdWin_clicked()
     w->setWindowTitle("标准数据模型");
     w->show();
 }
+
+void MainWindow::on_btnConSQL_clicked()
+{
+    QString file = QFileDialog::getOpenFileName(this,"选择数据库文件","",
+                                                   "SQLite数据库(*.db *.db3)");
+    qDebug() << file;
+    if(file.isEmpty())
+        return;
+    QSqlDatabase m_db = QSqlDatabase::addDatabase("QSQLITE");
+    m_db.setDatabaseName(file);
+    if(!m_db.open())
+    {
+        qDebug()<<"打开失败";
+        return;
+    }
+    QSqlQueryModel *model = new QSqlQueryModel;
+    model->setQuery("SELECT NAME, SALARY FROM COMPANY");
+    model->setHeaderData(0, Qt::Horizontal, tr("Name"));
+    model->setHeaderData(1, Qt::Horizontal, tr("Salary"));
+    ui->tableView_2->setModel(model);
+}

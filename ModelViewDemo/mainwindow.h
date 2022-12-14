@@ -6,6 +6,11 @@
 
 #include <QFileSystemModel>
 #include <QStringListModel>
+#include <QSqlQueryModel>
+#include <QSqlQuery>
+#include <QSqlDatabase>
+//#include <QSQLiteDriver>
+
 
 #include "standarditemwindow.h"
 
@@ -38,6 +43,8 @@ private slots:
     void on_listView_2_clicked(const QModelIndex &index);
 
     void on_btnOpenStdWin_clicked();
+
+    void on_btnConSQL_clicked();
 
 private:
     Ui::MainWindow *ui;
