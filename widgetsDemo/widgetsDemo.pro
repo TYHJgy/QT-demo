@@ -21,6 +21,7 @@ SOURCES += \
     client.cpp \
     codeuiform.cpp \
     customtabstyle.cpp \
+    customwidgetform.cpp \
     dataanalyzeform.cpp \
     databaseOperation.cpp \
     dialogSerial.cpp \
@@ -37,6 +38,8 @@ SOURCES += \
     musicplayerform.cpp \
     mybutton.cpp \
     myudpdemoform.cpp \
+    progressdialog.cpp \
+    progressdialog2.cpp \
     qsimpleled.cpp \
     rsdemoform.cpp \
     server.cpp \
@@ -57,6 +60,7 @@ HEADERS += \
     client.h \
     codeuiform.h \
     customtabstyle.h \
+    customwidgetform.h \
     dataanalyzeform.h \
     databaseOperation.h \
     dialogSerial.h \
@@ -72,6 +76,8 @@ HEADERS += \
     musicplayerform.h \
     mybutton.h \
     myudpdemoform.h \
+    progressdialog.h \
+    progressdialog2.h \
     qsimpleled.h \
     rsdemoform.h \
     server.h \
@@ -90,6 +96,7 @@ HEADERS += \
 FORMS += \
     audiorecorderform.ui \
     codeuiform.ui \
+    customwidgetform.ui \
     dataanalyzeform.ui \
     dialoglogin.ui \
     exceldemoform.ui \
@@ -102,6 +109,7 @@ FORMS += \
     mouserightdemoform.ui \
     musicplayerform.ui \
     myudpdemoform.ui \
+    progressdialog.ui \
     rsdemoform.ui \
     styledemoform.ui \
     sysmanageform.ui \

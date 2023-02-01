@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>icon/youdao.png</file>
+        <file>icon/enter2.png</file>
+        <file>icon/exit.png</file>
+        <file>icon/exit2.png</file>
+        <file>icon/exit3.png</file>
+        <file>icon/exit4.png</file>
+    </qresource>
+</RCC>

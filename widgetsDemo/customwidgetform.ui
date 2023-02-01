@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CustomWidgetForm</class>
+ <widget class="QWidget" name="CustomWidgetForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>633</width>
+    <height>494</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>613</width>
+        <height>474</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="MyButton" name="widget" native="true"/>
+       </item>
+       <item row="1" column="2">
+        <widget class="QWidget" name="widget_3" native="true"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QWidget" name="widget_4" native="true"/>
+       </item>
+       <item row="0" column="2">
+        <widget class="QWidget" name="widget_5" native="true"/>
+       </item>
+       <item row="0" column="1">
+        <widget class="QWidget" name="widget_2" native="true"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QWidget" name="widget_6" native="true"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QWidget" name="widget_7" native="true"/>
+       </item>
+       <item row="2" column="1">
+        <widget class="QWidget" name="widget_8" native="true"/>
+       </item>
+       <item row="2" column="2">
+        <widget class="QWidget" name="widget_9" native="true"/>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MyButton</class>
+   <extends>QWidget</extends>
+   <header>mybutton.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

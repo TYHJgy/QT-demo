@@ -11,6 +11,11 @@
 #include <QInputDialog>
 #include <QMessageBox>
 #include <QProgressDialog>
+#include "progressdialog.h"
+#include "progressdialog2.h"
+#include "customwidgetform.h"
+
+
 
 QT_BEGIN_NAMESPACE
 // 此处的MainWindow是命名空间Ui下的MainWindow，和当前文件定义的MainWindow不是同一个。

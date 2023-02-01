@@ -1,0 +1,30 @@
+QLabel#label{
+        border-image: url(:/icon/icon/youdao.png);
+}
+
+QLabel#label_2{
+        font: 75 9pt "Adobe Gothic Std B";
+}
+
+QWidget#widget{
+        background-color: rgb(237, 239, 242);
+}
+
+QWidget#widget_2{
+        background-color: rgb(237, 239, 242);
+}
+
+QWidget#widget_3{
+    border-top-left-radius:20px;
+        background-color: rgb(255, 255, 255);
+}
+
+QPushButton#pushButton{
+        background-color: rgb(237, 239, 242);
+        border-radius:1px;
+        padding: 15px 3px;
+}
+QPushButton#pushButton:hover{
+        border-radius:1px;
+        background-color: qlineargradient(spread:pad, x1:0, y1:0.5, x2:0.5, y2:0.5, stop:0 rgba(230, 230, 234, 255), stop:1 rgba(237, 239, 242, 255));
+}

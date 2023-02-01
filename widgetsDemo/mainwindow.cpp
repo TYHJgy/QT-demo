@@ -36,6 +36,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     widget_tcp_demo->move(0,0);
 //    widget_tcp_demo->show();
+
+
+
 }
 
 MainWindow::~MainWindow()
@@ -73,30 +76,66 @@ void MainWindow::on_dataAnalyze_clicked()
  */
 void MainWindow::on_DialogDemo_clicked()
 {
-//    QDialog *dlg = new QDialog(this);//基本对话框
-//    QColorDialog *dlg = new QColorDialog(this);   //颜色选择对话框
-//    QFileDialog *dlg = new QFileDialog(this);     //文件选择对话框
-//    QFontDialog *dlg = new QFontDialog(this);     //字体选择对话框
-//    QInputDialog *dlg = new QInputDialog(this);   //输入对话框
-    QMessageBox *dlg = new QMessageBox(this);     //消息对话框
-    dlg->setText("我是消息对话框");
-    dlg->setWindowTitle("提示");
-//    QProgressDialog *dlg = new QProgressDialog(this);     //进度条对话框
-    dlg->setWindowModality(Qt::ApplicationModal);
-    dlg->show();
-    if (dlg->exec()){
-//        qDebug() << dlg->selectedFiles();   //文件选择对话框
-//        qDebug() << dlg->selectedFont();    //字体选择对话框
-//        qDebug() << dlg->textValue();       //输入对话框
-        qDebug() << "";
-    }
-    //文件选择对话框
-//    qDebug() << QFileDialog::getOpenFileName(this,tr("Open Image"), "/home/jana", tr("Image Files (*.png *.jpg *.bmp)"));
-    //路径选择对话框
-//    qDebug() << QFileDialog::getExistingDirectory(this, "选择路径","/");
-    //消息对话框
-    QMessageBox::question(this,tr("弹窗标题"),tr("弹窗内容"),QMessageBox::Ok | QMessageBox::Cancel,QMessageBox::Ok);
+    int i=3;
 
+    if(0==i){
+        //    QDialog *dlg = new QDialog(this);//基本对话框
+        //    QColorDialog *dlg = new QColorDialog(this);   //颜色选择对话框
+        //    QFileDialog *dlg = new QFileDialog(this);     //文件选择对话框
+        //    QFontDialog *dlg = new QFontDialog(this);     //字体选择对话框
+        //    QInputDialog *dlg = new QInputDialog(this);   //输入对话框
+            QMessageBox *dlg = new QMessageBox(this);     //消息对话框
+            dlg->setText("我是消息对话框");
+            dlg->setWindowTitle("提示");
+            dlg->setWindowModality(Qt::ApplicationModal);
+            dlg->show();
+            if (dlg->exec()){
+        //        qDebug() << dlg->selectedFiles();   //文件选择对话框
+        //        qDebug() << dlg->selectedFont();    //字体选择对话框
+        //        qDebug() << dlg->textValue();       //输入对话框
+                qDebug() << "";
+            }
+    }else if(1==i){
+        QProgressDialog *dlg = new QProgressDialog(this);     //进度条对话框
+        dlg->setWindowModality(Qt::ApplicationModal);
+        dlg->show();
+    }else if(2==i){
+        ProgressDialog * dlg = new ProgressDialog(this);
+//        dlg->setWindowTitle(" ");
+        QRect rect =this->geometry();
+        qDebug() <<"1"<< rect;
+        qDebug() <<"2"<< dlg->geometry();
+        dlg->setGeometry(rect.width()/2-dlg->geometry().width()/2,
+                         rect.height()/2-dlg->geometry().height()/2,
+                         dlg->geometry().width(),
+                         dlg->geometry().height());
+        qDebug() <<"3"<< dlg->geometry();
+        dlg->show();
+    }else if(3==i){
+        ProgressDialog2 * dlg = new ProgressDialog2(this);
+        QRect rect =this->geometry();
+        qDebug() <<"1"<< rect;
+        qDebug() <<"2"<< dlg->geometry();
+        dlg->setGeometry(rect.width()/2-dlg->geometry().width()/2,
+                         rect.height()/2-dlg->geometry().height()/2,
+                         dlg->geometry().width(),
+                         dlg->geometry().height());
+        qDebug() <<"3"<< dlg->geometry();
+        dlg->show();
+    }else if(4==i){
+
+    }else if(5==i){
+
+    }else if(6==i){
+
+    }else{
+        //文件选择对话框
+    //    qDebug() << QFileDialog::getOpenFileName(this,tr("Open Image"), "/home/jana", tr("Image Files (*.png *.jpg *.bmp)"));
+        //路径选择对话框
+    //    qDebug() << QFileDialog::getExistingDirectory(this, "选择路径","/");
+        //消息对话框
+        QMessageBox::question(this,tr("弹窗标题"),tr("弹窗内容"),QMessageBox::Ok | QMessageBox::Cancel,QMessageBox::Ok);
+    }
 }
 
 /**
@@ -189,12 +228,9 @@ void MainWindow::on_ExcelDemo_clicked()
 //自定义控件
 void MainWindow::on_CustomButtonDemo_clicked()
 {
-    QWidget * w = new QWidget();
+    CustomWidgetForm * w = new CustomWidgetForm();
     w->setWindowModality(Qt::ApplicationModal);
     w->setWindowTitle("自定义控件");
-    w->resize(400, 300);
-    MyButton *mybtn = new MyButton(w);
-
     w->show();
 }
 
