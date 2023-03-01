@@ -157,6 +157,7 @@
 #define __GXX_ABI_VERSION 1011
 #define __FLT128_HAS_INFINITY__ 1
 #define __FLT_MIN_EXP__ (-125)
+#define __cpp_inheriting_constructors 201511
 #define __i686__ 1
 #define __cpp_lambdas 200907
 #define __FLT64X_HAS_QUIET_NAN__ 1
@@ -280,7 +281,6 @@
 #define __INT64_TYPE__ long long int
 #define __FLT_MAX_EXP__ 128
 #define __DBL_MANT_DIG__ 53
-#define __cpp_inheriting_constructors 201511
 #define __SIZEOF_FLOAT128__ 16
 #define __INT_LEAST64_MAX__ 0x7fffffffffffffffLL
 #define __DEC64_MIN__ 1E-383DD

@@ -4,15 +4,30 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , leftBarMode(0)
 {
     ui->setupUi(this);
-//    setWindowFlags(Qt::FramelessWindowHint);//去掉系统提供的窗口边框
-    int test1 = 0;
-    int test2 = 1;
-    testAdd(test1=0,test2=0);
-    testAdd(++test1,++test2);
+    setWindowFlags(Qt::FramelessWindowHint);//去掉系统提供的窗口边框
+
+    //初始化界面
+    initForm();
+
+    //为指定对象安装事件过滤器
+    ui->widget->installEventFilter(this);
+    ui->widget_2->installEventFilter(this);
     ui->pushButton->installEventFilter(this);
-    ui->pushButton_2->installEventFilter(this);
+    ui->pushButton->installEventFilter(this);
+//    for(int i=0;i<100;i++){
+//        QPushButton btn;
+//        btns.append(btn);
+//    }
+    btn.i=0;
+    btns.append(btn);
+    btn.i=1;
+    qDebug() <<"btn"<< &btn;
+    qDebug() <<"btns[0].i"<< &btns[0];
+    TestClass btn2 = btns[0];
+    qDebug() <<"btn2"<< &btn2;
 }
 
 MainWindow::~MainWindow()
@@ -20,28 +35,91 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-QString MainWindow::testString()
+//关闭窗口事件
+void MainWindow::closeEvent(QCloseEvent *event)
 {
-    QString str = "123456789";
-    qDebug() << "1:"<< str;
-    qDebug() << "1:"<< &str;
-
-    QString str1 = str;
-    qDebug() << "1:"<< str1;
-    qDebug() << "1:"<< &str1;
-
-    return str;
+    if(true){
+        event->accept();
+    }else{
+        event->ignore();
+    }
 }
 
-void MainWindow::testAdd(const int i1, const int i2)
+void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    qDebug() << "i1:"<< i1;
-    qDebug() << "i2:"<< i2;
+    if (event->button() == Qt::LeftButton)
+    {
+        m_bDrag = true;
+        //获得鼠标的初始位置
+        mouseStartPoint = event->globalPos();
+        //mouseStartPoint = event->pos();
+        //获得窗口的初始位置
+        windowTopLeftPoint = this->frameGeometry().topLeft();
+    }
 }
 
+void MainWindow::mouseMoveEvent(QMouseEvent *event)
+{
+    if(m_bDrag){
+        //获得鼠标移动的距离
+        QPoint distance = event->globalPos() - mouseStartPoint;
+        //改变窗口的位置
+        this->move(windowTopLeftPoint + distance);
+    }
+}
+
+void MainWindow::mouseReleaseEvent(QMouseEvent *event)
+{
+    if (event->button() == Qt::LeftButton)
+    {
+        m_bDrag = false;
+    }
+}
+
+void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)
+{
+    Q_UNUSED(event);
+    ui->pushButton_3->click();
+}
+
+void MainWindow::initForm()
+{
+    //APP图标
+    ui->label->setStyleSheet(appIconPath);
+
+    //左侧按键
+    leftBarBtnList << ui->pushButton_2
+                   << ui->pushButton_3
+                   << ui->pushButton_4
+                   << ui->pushButton_5
+                   << ui->pushButton_6
+                   << ui->pushButton_7;
+
+    foreach(QPushButton*e,leftBarBtnList){
+        //设置文字
+        e->setText(leftBarBtnName[leftBarBtnList.indexOf(e)]);
+        //设置图标
+        QIcon icon;
+        icon.addFile(leftBarBtnIconPath.at(leftBarBtnList.indexOf(e)));
+        e->setIcon(icon);
+        //设置图标在左，文字右
+        e->setLayoutDirection(Qt::LeftToRight);
+    }
+
+    //设置展开控件图标
+    QIcon icon;
+    leftBarSwitchBtnIconPathCurrent = leftBarSwitchBtnIconPath.at(0);
+    icon.addFile(leftBarSwitchBtnIconPathCurrent);
+    ui->pushButton->setIcon(icon);
+
+    //设置光标
+    ui->lineEdit_5->setFocus();
+}
+
+
+//初始化样式表。从QSS文件读取QSS样式（未使用此方法）
 void MainWindow::initStyleSheet()
 {
-
     QFile *styleFile;
     styleFile  = new QFile(":/style/style/style.qss", this); //获取资源文件的对象
     styleFile->open(QFile::ReadOnly);//只读模式
@@ -50,10 +128,19 @@ void MainWindow::initStyleSheet()
     styleFile->close();//最后关闭这个文件
 }
 
+void MainWindow::maximizeForm()
+{
+    if(this->isMaximized())
+        this->showNormal();
+    else
+        this->showMaximized();
+}
+
 bool MainWindow::eventFilter(QObject *obj, QEvent *ev)
 {
+//    qDebug() << "obj:" << obj->objectName();
     if(obj == ui->pushButton){
-//        qDebug() << "obj:" << obj->objectName();
+
         if(ev->type() == QEvent::HoverEnter){
             qDebug() << "ev:" << ev->type();
             //切换icon
@@ -69,22 +156,94 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *ev)
             ui->pushButton->setIcon(icon);
         }
     }
-    if(obj == ui->pushButton_2){
-        if(ev->type() == QEvent::HoverEnter){
-            qDebug() << "ev:" << ev->type();
-            //切换icon
-            QIcon icon;
-            icon.addFile(QString::fromUtf8(":/icon/icon/exit4.png"), QSize(), QIcon::Normal, QIcon::Off);
-            ui->pushButton_2->setIcon(icon);
+    if(obj == ui->widget){
+        if(ev->type() == QEvent::MouseButtonDblClick){
+            qDebug() << "widget ev:" << ev->type();
+            maximizeForm();
         }
-        if(ev->type() == QEvent::HoverLeave){
-            qDebug() << "ev:" << ev->type();
-            //切换icon
+    }
+    if(obj == ui->widget_2){
+        if(ev->type() == QEvent::Enter){
             QIcon icon;
-            ui->pushButton_2->setIcon(icon);
-            return true;
+            icon.addFile(leftBarSwitchBtnIconPathCurrent);
+            ui->pushButton->setIcon(icon);
+        }
+        if(ev->type() == QEvent::Leave){
+            QIcon icon;
+            ui->pushButton->setIcon(icon);
         }
     }
     return false;
 }
 
+
+void MainWindow::on_pushButton_clicked()
+{
+    if(0==leftBarMode){
+        leftBarMode = 1;
+        foreach(QPushButton*e,leftBarBtnList)
+            e->setText("");
+    }else{
+        leftBarMode = 0;
+        foreach(QPushButton*e,leftBarBtnList)
+            e->setText(leftBarBtnName[leftBarBtnList.indexOf(e)]);
+    }
+    //切换图标
+    QIcon icon;
+    leftBarSwitchBtnIconPathCurrent = leftBarSwitchBtnIconPath.at(leftBarMode);
+    icon.addFile(leftBarSwitchBtnIconPathCurrent);
+    ui->pushButton->setIcon(icon);
+}
+
+void MainWindow::on_pushButton_8_clicked()
+{
+#if 0
+    //消息对话框
+    QMessageBox::StandardButton btn = QMessageBox::question(this,tr("提示"),tr("确认退出？"),QMessageBox::Yes | QMessageBox::No);
+    if(btn == QMessageBox::Yes)
+        this->close();
+#else
+    //关闭APP
+    this->close();
+#endif
+}
+
+void MainWindow::on_pushButton_9_clicked()
+{
+    maximizeForm();
+}
+
+void MainWindow::on_pushButton_10_clicked()
+{
+    this->showMinimized();
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(2);
+}
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(3);
+}
+
+void MainWindow::on_pushButton_6_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(4);
+}
+
+void MainWindow::on_pushButton_7_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(5);
+}

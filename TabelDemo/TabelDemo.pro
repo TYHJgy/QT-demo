@@ -17,12 +17,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp \
-    testclass.cpp
+    mainwindow.cpp
 
 HEADERS += \
-    mainwindow.h \
-    testclass.h
+    mainwindow.h
 
 FORMS += \
     mainwindow.ui
@@ -31,21 +29,3 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-RESOURCES += \
-    icon.qrc \
-    style.qrc
-
-win32:CONFIG(release, debug|release): LIBS += -LC:/Qwt-6.3.0-dev/lib/ -lqwt
-else:win32:CONFIG(debug, debug|release): LIBS += -LC:/Qwt-6.3.0-dev/lib/ -lqwtd
-else:unix: LIBS += -LC:/Qwt-6.3.0-dev/lib/ -lqwt
-
-INCLUDEPATH += C:/Qwt-6.3.0-dev/include
-DEPENDPATH += C:/Qwt-6.3.0-dev/include
-
-win32:CONFIG(release, debug|release): LIBS += -LC:/Qwt-6.3.0-dev/lib/ -lqwt
-else:win32:CONFIG(debug, debug|release): LIBS += -LC:/Qwt-6.3.0-dev/lib/ -lqwtd
-else:unix: LIBS += -LC:/Qwt-6.3.0-dev/lib/ -lqwt
-
-INCLUDEPATH += C:/Qwt-6.3.0-dev/include
-DEPENDPATH += C:/Qwt-6.3.0-dev/include

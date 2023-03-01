@@ -50,5 +50,10 @@ private:
     Ui::MainWindow *ui;
     QFileSystemModel * fileSystemModel;
     QStringListModel * stringListModel;
+    QSqlDatabase db;
+
+
+    void connectSQLite();
+    void connectMySql();
 };
 #endif // MAINWINDOW_H

@@ -68,6 +68,7 @@ void MainWindow::initStringListModelView()
 }
 
 
+
 void MainWindow::on_btnListAppend_clicked()
 {
     //添加一行
@@ -129,6 +130,12 @@ void MainWindow::on_btnOpenStdWin_clicked()
 
 void MainWindow::on_btnConSQL_clicked()
 {
+//    connectSQLite();
+    connectMySql();
+}
+
+void MainWindow::connectSQLite()
+{
     QString file = QFileDialog::getOpenFileName(this,"选择数据库文件","",
                                                    "SQLite数据库(*.db *.db3)");
     qDebug() << file;
@@ -142,8 +149,39 @@ void MainWindow::on_btnConSQL_clicked()
         return;
     }
     QSqlQueryModel *model = new QSqlQueryModel;
-    model->setQuery("SELECT NAME, SALARY FROM COMPANY");
+//    model->setQuery("SELECT NAME, SALARY FROM COMPANY");
+    model->setQuery("SELECT * FROM COMPANY");
     model->setHeaderData(0, Qt::Horizontal, tr("Name"));
     model->setHeaderData(1, Qt::Horizontal, tr("Salary"));
     ui->tableView_2->setModel(model);
+}
+
+
+void MainWindow::connectMySql()
+{
+    db = QSqlDatabase::addDatabase("QODBC");
+    db.setDatabaseName("sfz");
+    db.open();
+    QSqlQueryModel *model = new QSqlQueryModel;
+    QString sql = "SELECT fault.`PRODUCT_CODE`, fault.`JWH`,fault.`TIME`,fault.`TYPE`, fault_child.`CHILD_TYPE` "
+                  "FROM fault "
+                  "INNER JOIN fault_child "
+                  "ON fault.`ID` = fault_child.`FAULT_ID`";
+    QString sql2 = "SELECT fault.`PRODUCT_CODE`, fault.`JWH`,fault.`TIME`,fault.`TYPE`, fault_child.`CHILD_TYPE` "
+            "FROM fault "
+            "INNER JOIN fault_child "
+            "ON fault.`ID` = fault_child.`FAULT_ID`"
+            "WHERE fault.`PRODUCT_CODE` LIKE '%0%' "
+            "AND fault.`JWH` LIKE '%1%' "
+            "AND fault.`TIME` LIKE '%2022%' "
+            "AND fault.`TYPE` LIKE '%AD%' "
+            "AND fault_child.`CHILD_TYPE` LIKE '%270%'";
+
+    QString sql3 = "SELECT * FROM fault_child";
+    model->setQuery(sql2);
+    model->setHeaderData(0, Qt::Horizontal, tr("Name"));
+    model->setHeaderData(1, Qt::Horizontal, tr("Salary"));
+    ui->tableView_2->setModel(model);
+
+    qDebug() << QString("('%%1%', '%%2%')").arg(11).arg(22);
 }
