@@ -16,13 +16,25 @@ MainWindow::~MainWindow()
 
 void MainWindow::initTableWidget()
 {
+    int columnCount = 3;
+    int rowCount = 0;
     QTableWidget * table = ui->tableWidget;
-    table->setColumnCount(1000);
-    table->setRowCount(0);
+    table->setColumnCount(columnCount);
+    table->setRowCount(rowCount);
     //列宽自适应table
-//    table->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);//列宽根据内容自动调整会导致更新表格数据时耗时加剧
-    table->horizontalHeader()->setSectionResizeMode(9,QHeaderView::Stretch);
-    table->horizontalHeader()->setSectionResizeMode(10,QHeaderView::Stretch);
+    table->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);//列宽根据内容自动调整会导致更新表格数据时耗时加剧
+    table->horizontalHeader()->setSectionResizeMode(columnCount-1,QHeaderView::Stretch);
+
+    //设置表头内容
+    for(int i=0;i<table->columnCount();i++){
+        table->setHorizontalHeaderItem(i,new QTableWidgetItem(tr("列%1").arg(i)));
+    }
+
+    //排序使能
+    table->setSortingEnabled(true);
+
+    table->selectedItems();
+
 }
 
 
@@ -34,7 +46,7 @@ void MainWindow::on_btnInsertRow_clicked()
     QTableWidgetItem * item;
     ui->tableWidget->setRowCount(ui->tableWidget->rowCount()+1);
     for(int i=0;i<ui->tableWidget->columnCount();i++){
-        item = new QTableWidgetItem(tr("%1").arg(100.105+i+ui->tableWidget->rowCount()));
+        item = new QTableWidgetItem(tr("%1").arg(i+ui->tableWidget->rowCount()));
         ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,i,item);
     }
     qDebug() << time.msecsTo(QTime::currentTime());

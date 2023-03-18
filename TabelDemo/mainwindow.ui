@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <property name="leftMargin">
@@ -130,7 +133,23 @@
          </layout>
         </item>
         <item>
-         <widget class="QTableWidget" name="tableWidget"/>
+         <widget class="QTableWidget" name="tableWidget">
+          <property name="rowCount">
+           <number>3</number>
+          </property>
+          <property name="columnCount">
+           <number>3</number>
+          </property>
+          <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+           <bool>false</bool>
+          </attribute>
+          <row/>
+          <row/>
+          <row/>
+          <column/>
+          <column/>
+          <column/>
+         </widget>
         </item>
        </layout>
       </widget>
