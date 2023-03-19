@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/j20.png</file>
+    </qresource>
+</RCC>

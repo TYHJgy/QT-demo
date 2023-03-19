@@ -55,17 +55,24 @@ void MainWindow::on_btnInsertRow_clicked()
 
 void MainWindow::on_btnDeleteRow_clicked()
 {
-    QTableWidgetItem * item = ui->tableWidget->item(1,1);
-    qDebug() << item;
-    delete item;
+    //获取鼠标所在的行。
+    int activeRow = ui->tableWidget->currentRow();
+
+    //删除该行。
+    ui->tableWidget->removeRow(activeRow);
 }
 
 void MainWindow::on_btnUpdateRow_clicked()
 {
     QTime time = QTime::currentTime();
+
+    //获取鼠标所在的行。
+    int activeRow = ui->tableWidget->currentRow();
+    if(activeRow<0)
+        activeRow = 0;
     QTableWidgetItem * item;
     for(int c=0;c<ui->tableWidget->columnCount();c++){
-        item = ui->tableWidget->item(ui->tableWidget->rowCount()-1,c);
+        item = ui->tableWidget->item(activeRow,c);
         item->setText("123456");
     }
     qDebug() << time.msecsTo(QTime::currentTime());
