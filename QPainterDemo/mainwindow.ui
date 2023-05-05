@@ -6,27 +6,87 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>717</width>
-    <height>586</height>
+    <width>779</width>
+    <height>675</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="WaterProgressBar" name="widget" native="true">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="Clock" name="widget" native="true">
       <property name="minimumSize">
        <size>
-        <width>0</width>
-        <height>0</height>
+        <width>300</width>
+        <height>300</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>16777215</width>
-        <height>16777215</height>
+        <width>300</width>
+        <height>300</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(216, 216, 216);
+width:15px;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="MyWidget" name="widget_2" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(216, 216, 216);
+width:15px;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="WaterProgressBar" name="widget_3" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(216, 216, 216);
+width:15px;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="SwitchButton" name="widget_4" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
        </size>
       </property>
       <property name="styleSheet">
@@ -42,7 +102,7 @@ width:15px;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>717</width>
+     <width>779</width>
      <height>26</height>
     </rect>
    </property>
@@ -53,7 +113,25 @@ width:15px;</string>
   <customwidget>
    <class>WaterProgressBar</class>
    <extends>QWidget</extends>
-   <header location="global">waterprogressbar.h</header>
+   <header>waterprogressbar.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MyWidget</class>
+   <extends>QWidget</extends>
+   <header>mywidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SwitchButton</class>
+   <extends>QWidget</extends>
+   <header location="global">switchbutton.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Clock</class>
+   <extends>QWidget</extends>
+   <header>clock.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

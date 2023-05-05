@@ -18,6 +18,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(tcpSocket, &QAbstractSocket::connected, this, &MainWindow::connected);
     connect(timer, &QTimer::timeout, this, &MainWindow::timeout);
     this->setWindowTitle("客户端");
+    SysTray * sysTray = new SysTray(this);
+    sysTray->show();
 }
 
 MainWindow::~MainWindow()

@@ -26,7 +26,7 @@ private slots:
     void readData();
     void on_txDataBtn_clicked();
     void timeout();
-
+    void disconnected();
 private:
     Ui::MainWindow *ui;
     QTcpServer *tcpServer = nullptr;

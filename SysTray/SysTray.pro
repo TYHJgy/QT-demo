@@ -1,4 +1,4 @@
-QT       += core gui network
+QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -19,7 +19,8 @@ SOURCES += \
     commonutils.cpp \
     custommenu.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    systray.cpp
 
 HEADERS += \
     commonutils.h \
@@ -34,3 +35,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    Resources.qrc

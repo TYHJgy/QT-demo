@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/Resources/MainWindow">
+        <file>app/logo.ico</file>
+        <file>app/page_close_btn_hover.png</file>
+    </qresource>
+</RCC>

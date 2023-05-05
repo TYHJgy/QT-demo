@@ -52,13 +52,15 @@ void MainWindow::newConnection()
     tcpSocket = tcpServer->nextPendingConnection();
     tcpSocketList.append(tcpSocket);
     connect(tcpSocket, &QIODevice::readyRead, this, &MainWindow::readData);
-    QString ip = tcpSocket->peerAddress().toString();
-    qint16 port = tcpSocket->peerPort();
+    connect(tcpSocket, &QTcpSocket::disconnected, this, &MainWindow::disconnected);
     in.setDevice(tcpSocket);
     in.setVersion(QDataStream::Qt_4_0);
     sendData(tcpSocket);
-    QString temp = QString(tr("client:[%1:%2]")).arg(ip).arg(port);
-    qDebug() << temp;
+    QString itemText = QString(tr("client:[%1:%2]")).arg(tcpSocket->peerAddress().toString()).arg(tcpSocket->peerPort());
+    qDebug() << itemText;
+    QListWidgetItem *newItem = new QListWidgetItem;
+    newItem->setText(itemText);
+    ui->clientIPList->insertItem(tcpSocketList.count()-1, newItem);
 }
 
 void MainWindow::readData()
@@ -76,29 +78,25 @@ void MainWindow::readData()
 
 void MainWindow::on_listenBtn_clicked()
 {
-    tcpServer->close();
-    QHostAddress address;
-    address.setAddress(ui->hostCombo->currentText());
-    quint32 port = ui->portLineEdit->text().toInt();
-    if (!tcpServer->listen(address,port)) {
-        QMessageBox::critical(this, tr("Server"),
-                              tr("Unable to start the server: %1.")
-                              .arg(tcpServer->errorString()));
-        return;
+    if(ui->listenBtn->text()=="监听"){
+        QHostAddress address;
+        address.setAddress(ui->hostCombo->currentText());
+        quint32 port = ui->portLineEdit->text().toInt();
+        if (!tcpServer->listen(address,port)) {
+            QMessageBox::critical(this, tr("Server"),
+                                  tr("Unable to start the server: %1.")
+                                  .arg(tcpServer->errorString()));
+            return;
+        }
+
+        ui->statusLabel->setText(tr("IP: %1 port: %2")
+                                 .arg(tcpServer->serverAddress().toString()).arg(tcpServer->serverPort()));
+
+        ui->listenBtn->setText("关闭");
+    }else{
+        ui->listenBtn->setText("监听");
+        tcpServer->close();
     }
-
-    fortunes << tr("You've been leading a dog's life. Stay off the furniture.")
-             << tr("You've got to think about tomorrow.")
-             << tr("You will be surprised by a loud noise.")
-             << tr("You will feel hungry again in another hour.")
-             << tr("You might have mail.")
-             << tr("You cannot kill time without injuring eternity.")
-             << tr("hello gy.")
-             << tr("Computers are not intelligent. They only think they are.");
-
-
-    ui->statusLabel->setText(tr("IP: %1 port: %2")
-                             .arg(tcpServer->serverAddress().toString()).arg(tcpServer->serverPort()));
 }
 
 void MainWindow::sendData( QTcpSocket *tcpSocket)
@@ -117,6 +115,19 @@ void MainWindow::timeout()
 {
     qDebug() << "in timeout";
     sendData(tcpSocket);
+
+}
+
+void MainWindow::disconnected()
+{
+    qDebug() << "in disconnected";
+    QTcpSocket * socket = (QTcpSocket*)sender();
+    QString itemText = QString(tr("client:[%1:%2]")).arg(socket->peerAddress().toString()).arg(socket->peerPort());
+    qDebug() << itemText;
+    QList<QListWidgetItem *> items = ui->clientIPList->findItems(itemText,Qt::MatchFlag::MatchContains);
+    ui->clientIPList->removeItemWidget(items[0]);
+    delete items[0];
+
 
 }
 void MainWindow::on_txDataBtn_clicked()

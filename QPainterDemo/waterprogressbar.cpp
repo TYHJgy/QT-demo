@@ -1,4 +1,4 @@
-//#include "stdafx.h"
+﻿//#include "stdafx.h"
 #include "waterprogressbar.h"
 
 WaterProgressBar::WaterProgressBar(QWidget *parent)
@@ -36,7 +36,7 @@ WaterProgressBar::~WaterProgressBar()
 
 void WaterProgressBar::paintEvent(QPaintEvent *)
 {
-    this->setGeometry(QRect(0,0,640,480));
+//    this->setGeometry(QRect(0,0,320,320));
     qDebug() << this->geometry();
 //    qDebug() << "event";
 
