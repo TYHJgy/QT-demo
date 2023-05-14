@@ -4,6 +4,7 @@
 SysTray::SysTray(QWidget *parent) : QSystemTrayIcon(parent)
     , m_parent(parent)
 {
+    this->setParent(parent);
     initSystemTray();
     show();
 }

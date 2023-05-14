@@ -20,13 +20,17 @@ SOURCES += \
     custommenu.cpp \
     main.cpp \
     mainwindow.cpp \
-    systray.cpp
+    systray.cpp \
+    testa.cpp \
+    testb.cpp
 
 HEADERS += \
     commonutils.h \
     custommenu.h \
     mainwindow.h \
-    systray.h
+    systray.h \
+    testa.h \
+    testb.h
 
 FORMS += \
     mainwindow.ui

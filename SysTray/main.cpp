@@ -1,6 +1,7 @@
 ﻿
 #include <QApplication>
 #include "mainwindow.h"
+#include "testb.h"
 
 
 
@@ -9,8 +10,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-//    w.show();
-//    SysTray sw;
-//    sw.show();
+    w.show();
+    TestB testb;
     return a.exec();
 }

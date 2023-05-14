@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
 //    this->setWindowState(Qt::WindowMinimized);
 //    this->setWindowState(Qt::
 //    this->setWindowFlag(Qt::Tool);//隐藏任务栏图标
-    SysTray * sw = new SysTray(this);
+    sw = new SysTray(this);
     sw->show();
 
 }
@@ -24,4 +24,5 @@ void MainWindow::closeEvent(QCloseEvent *event)
     qDebug() << "in closeEvent";
 //    event->accept();
     this->hide();
+    this->close();
 }

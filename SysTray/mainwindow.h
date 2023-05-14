@@ -22,5 +22,6 @@ public slots:
 
 private:
     Ui::MainWindow *ui;
+    SysTray * sw;
 };
 #endif // MAINWINDOW_H
