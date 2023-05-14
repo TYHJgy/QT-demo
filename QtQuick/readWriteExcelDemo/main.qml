@@ -7,6 +7,7 @@ ApplicationWindow {
     width: 840
     height: 680
     visible: true
+
     MainPage{
         id:mainPage
         anchors.fill: parent
