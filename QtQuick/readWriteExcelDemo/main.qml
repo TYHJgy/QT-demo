@@ -7,6 +7,8 @@ ApplicationWindow {
     width: 840
     height: 680
     visible: true
+    font.family: "Helvetica"
+    font.pointSize: 15
 
     MainPage{
         id:mainPage
